@@ -309,9 +309,54 @@ section{position:relative;z-index:1}
 
 /* ===== STORY ===== */
 .story{
-  padding:120px 24px;
-  background:var(--warm);
-  text-align:center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  /* 確保底色與照片背景接近 */
+  background-color: #fdfaf5; 
+}
+  .story-photo-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;         /* 維持右側版面 */
+  height: 100%;
+  /* 關鍵修正：改用 contain 確保圖片不被裁切 */
+  background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
+  background-size: contain;    
+  background-position: right bottom; /* 讓人物對齊右下角，避免懸空 */
+  background-repeat: no-repeat;
+  
+  opacity: 0.2;       /* 稍微調高一點點，讓夥伴的身影清晰一些 */
+  
+  /* 讓左側邊緣柔和消失 */
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0));
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0));
+  z-index: 1;
+}
+/* 確保文字內容不會被背景干擾 */
+.story-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+  /* 強化標題顯眼度 */
+.section-title {
+  color: #0e1f38;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+/* 故事內文排版 */
+.story-text p {
+  color: #4a4a4a;
+  line-height: 2;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 .story-inner{max-width:680px;margin:0 auto}
 .story .section-title{color:var(--navy2)}
@@ -591,6 +636,11 @@ footer{
 @media(max-width:768px){
 /* 1. 導覽列與標題基礎縮放 */
   nav { padding: 14px 20px; }
+  .story-photo-bg {
+    width: 100%;      /* 手機版照片舖滿全螢幕 */
+    opacity: 0.1;     /* 亮度再調低一點，避免干擾文字 */
+    mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); /* 底部向上淡入 */
+  }
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
 
