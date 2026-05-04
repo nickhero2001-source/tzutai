@@ -633,6 +633,71 @@ footer{
 .reveal-delay-4{transition-delay:.4s}
 
 /* 🔥 MOBILE RWD 優化 */
+  @media (min-width: 769px) {
+  .story {
+    display: flex;
+    align-items: center;
+    min-height: 100vh; /* 讓這一區塊擁有整頁的高度感 */
+    padding: 0;
+    background-color: #fdfaf5;
+  }
+
+  .story-photo-bg {
+    position: absolute;
+    right: 5%;         /* 讓照片離右邊邊緣有一點留白 */
+    width: 45%;
+    height: 80%;
+    background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    opacity: 0.25;     /* 柔和的透明度 */
+    /* 質感遮罩：讓照片邊緣像雲霧一樣散開 */
+    mask-image: radial-gradient(circle at center right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: radial-gradient(circle at center right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%);
+    z-index: 1;
+  }
+
+  .story-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;  /* 改為靠左對齊，更有設計感 */
+    padding-left: 10%; /* 讓文字靠左偏一些 */
+    max-width: 600px;
+  }
+
+  /* 增加「OUR STORY」的小標質感 */
+  .story-subtitle {
+    letter-spacing: 0.3em;
+    font-size: 14px;
+    color: #c5a47e;   /* 質感金棕色 */
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  /* 太陽圖示縮放 */
+  .story-icon img {
+    width: 60px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+
+  /* 標題與內文 */
+  .section-title {
+    font-size: 48px;  /* 放大標題，增加視覺張力 */
+    margin-bottom: 30px;
+    color: #0e1f38;
+  }
+
+  .story-text p {
+    font-size: 19px;
+    line-height: 2.2; /* 拉大行高，閱讀更舒服 */
+    color: #555;
+    margin-bottom: 1.5em;
+    border-left: 2px solid #c5a47e; /* 左側細金線點綴 */
+    padding-left: 25px;
+  }
+}
 @media(max-width:768px){
 /* 1. 導覽列與標題基礎縮放 */
   nav { padding: 14px 20px; }
@@ -739,20 +804,20 @@ footer{
 </section>
 
 <!-- STORY -->
-<section class="story" id="story">
+<section id="story" class="story">
   <div class="story-photo-bg"></div>
-  <div class="story-inner">
-    <span class="section-label">Our Story</span>
-    <div class="moon-divider"></div>
-    <h2 class="section-title reveal">不同的節奏，<br>同一份美好</h2>
-    <p class="section-sub reveal reveal-delay-1" style="margin-top:30px;font-family:'Noto Serif TC',serif;color:#333">
-      在新北市慈泰庇護工場，<br>
-      每一位夥伴都有不同的節奏與方式。<br><br>
-      就像布萊梅音樂家的故事——<br>
-      每個人帶著自己獨特的聲音出發，<br>
-      當這些不同聚在一起，<br>
-      就能完成一件美好的事。
-    </p>
+  <div class="container">
+    <div class="story-content">
+      <span class="story-subtitle">OUR STORY</span>
+      <div class="story-icon">
+        <img src="https://path-to-sun.png" alt="sun">
+      </div>
+      <h2 class="section-title">不同的節奏，<br>同一份美好</h2>
+      <div class="story-text">
+        <p>在新北市慈泰庇護工場，<br>每一位夥伴都有不同的節奏與方式。</p>
+        <p>就像布萊梅音樂家的故事——<br>當這些不同聚在一起，<br>就能完成一件美好的事。</p>
+      </div>
+    </div>
   </div>
 </section>
 
