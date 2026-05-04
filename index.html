@@ -704,29 +704,51 @@ footer{
   .enterprise-card { padding: 32px 24px; }
   .footer-inner { flex-direction: column; }
 }
-  @media (min-width: 769px) {
-  /* 讓圖示容器維持置中，不隨文字靠左 */
+@media (min-width: 769px) {
+  .story {
+    display: flex;
+    align-items: center;
+    padding: 150px 0; /* 增加上下留白，更有高級感 */
+  }
+
+  .story-content {
+    text-align: left;
+    padding-left: 12%; /* 這是我們的視覺起點線 */
+    max-width: 700px;
+  }
+
+  /* --- 月亮圖標：靠左對齊，大小微調 --- */
   .story-icon {
     display: flex;
-    justify-content: center; /* 水平置中 */
-    width: 100%;             /* 佔滿寬度才能置中 */
-    margin-bottom: 25px;     /* 增加與標題的間距 */
-    margin-left: -12%;       /* 補償 content 的 padding-left，讓它對準螢幕中心 */
+    justify-content: flex-start; /* 讓月亮回到左側軸線上 */
+    margin-bottom: 20px;
+    margin-left: 0; /* 移除之前的偏移修正 */
   }
 
   .moon-icon {
-    width: 60px;               /* 稍微放大，更有存在感 */
-    height: 60px;
+    width: 55px; /* 55px-60px 是最具質感的點綴大小 */
+    height: 55px;
     object-fit: cover;
-    object-position: 50% 20%;  /* 維持裁切月亮位置 */
+    /* 調整 crop 位置，盡量避開插畫下方的動物剪影，保留黃色月亮感 */
+    object-position: center 10%; 
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255, 235, 59, 0.4); /* 增加光暈感 */
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5); /* 增加細緻的白邊，像月亮的光暈 */
   }
-  
-  .story-content {
-    /* 確保文字依然靠左，但整體重心更平衡 */
+
+  /* --- 小標：也必須靠左 --- */
+  .story-subtitle {
     text-align: left;
-    padding-left: 12%;
+    display: block;
+    margin-bottom: 10px;
+    letter-spacing: 0.5em; /* 增加字距，提升排版質感 */
+    color: #c5a47e;
+  }
+
+  .section-title {
+    font-size: 44px;
+    line-height: 1.3;
+    margin-top: 10px;
   }
 }
 </style>
