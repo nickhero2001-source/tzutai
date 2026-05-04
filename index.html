@@ -89,23 +89,52 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 
 /* ===== HERO ===== */
 .hero{
-  position:relative;
-  background:var(--navy);
-  overflow:hidden;
+  position: relative;
+  width: 100%;
+  height: auto;           /* 關鍵：讓高度由內容決定 */
+  min-height: 450px;      /* 設定最小高度，避免在窄螢幕縮得太小 */
+  background: var(--navy);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* 改為垂直排列 */
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-poster{
-  width:100%;
-  height:auto;
-  display:block;
-  transform-origin:center center;
-  animation:heroZoom 22s ease-in-out infinite alternate;
-  position:relative;
-  z-index:0;
+  width: 100%;
+  height: auto;           /* 讓圖片根據寬度自動決定高度，避免變形 */
+  max-height: 550px;      /* 設定最大高度上限，防止在寬螢幕下太大 */
+  object-fit: contain;    /* 改用 contain 確保整張圖都能完整呈現 */
+  object-position: bottom; /* 讓圖片貼著底部，對接下方的內容區塊 */
+  background-color: #0e1f38; /* 設定與圖片底色一致的深藍色，補足兩側空隙 */
+  display: none;
+  position: relative;
+  z-index: 0;
+  animation: heroZoom 22s ease-in-out infinite alternate;
 }
 @keyframes heroZoom{
   from{transform:scale(1.0)}
   to{transform:scale(1.04)}
+}
+
+.hero-image-bg {
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.ibb.co/4ZRzPnKW/image.png');
+  background-size: contain;    /* 關鍵：改用 contain 確保圖片完整呈現不被裁切 */
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: heroBgFade 4s ease forwards;
+}
+@keyframes heroBgFade {
+   0% { opacity: 0; transform: scale(1.05); }
+  30% { opacity: 1; transform: scale(1); }    /* 讓完整圖像停留時間長一點 */
+  100% { opacity: 0.55; transform: scale(1); } /* 最終停止在 0.55 的透明度，維持背景感 */
 }
 
 .hero-vignette{
@@ -135,32 +164,52 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 }
 
 .hero-content{
-  position:relative;
-  z-index:3;
-  text-align:center;
-  padding:60px 24px 80px;
-  margin-top:0;
-  background:var(--warm);
-  animation:fadeUp .9s ease both;
+/* 強制浮動在最上層 */
+  position: absolute; 
+  top: 50%;           /* 垂直置中 */
+  left: 50%;          /* 水平置中 */
+  transform: translate(-50%, -50%); /* 修正中心點偏移 */
+  
+  z-index: 5;         /* 確保層級高於背景圖與遮罩 */
+  width: 90%;         /* 設定寬度避免文字貼邊 */
+  max-width: 800px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+
+  /* 維持您要的動畫效果 */
+  opacity: 0;
+  animation: contentFadeUp 1.5s ease 2.5s forwards; 
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes contentFadeUp {
+  from { 
+    opacity: 0; 
+    transform: translate(-50%, calc(-50% + 30px)); /* 從中心點下方 30px 開始 */
+  }
+  to { 
+    opacity: 1; 
+    transform: translate(-50%, -50%); /* 回到正中心 */
+  }
+}
 
 /* 🔥 主視覺標題優化 */
 .hero-title{
-  font-family:'Noto Serif TC',serif;
-  font-size:clamp(32px, 5vw, 56px); /* 套用更大的視覺層級 */
+ color: #FFFFFF !important;
+  font-size: 42px;
   font-weight: 700;
-  color:var(--navy2);
-  line-height:1.4;
-  text-shadow:none;
-  margin-bottom:24px;
+  /* 加上雙層陰影：一層模糊擴散，一層深色邊框 */
+  text-shadow: 
+    0 0 15px rgba(0, 0, 0, 0.8), 
+    2px 2px 4px rgba(0, 0, 0, 1); 
+  line-height: 1.4;
 }
-.hero-title em{color:var(--gold2);font-style:normal}
+.hero-title em{color: #FFD700 !important; /* 強調「一起」的金色 */
+  font-style: normal;
+}
 .hero-quote{
-  font-size:16px;color:var(--muted);
-  letter-spacing:.05em;margin-bottom:32px;
-  font-style:italic;
-  opacity: 0.85;
+  color: #f0f0f0;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 /* 🔥 按鈕全域優化 */
@@ -202,10 +251,20 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 .btn-gold:active{transform:translateY(0);box-shadow:0 1px 0 #b07c10}
 
 .btn-outline{
-  border:1.5px solid rgba(31,58,95,.3);
-  color:var(--navy2);
-  margin-left:14px;
-  background:rgba(31,58,95,.05);
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  /* 強化視覺設定 */
+  border: 2px solid #FFFFFF;      /* 使用純白邊框 */
+  color: #FFFFFF;                 /* 文字改為純白 */
+  background: rgba(255, 255, 255, 0.1); /* 淡淡的白色底，幫助在深色背景跳脫 */
+  backdrop-filter: blur(5px);      /* 增加一點毛玻璃效果，更有質感 */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); /* 文字陰影，防止背景太亮時看不見字 */
+  margin-left: 10px;
 }
 .btn-outline::before{
   content:'';position:absolute;inset:0;
@@ -213,9 +272,10 @@ nav.scrolled{background:rgba(14,31,56,.96)}
   opacity:0;transition:opacity .3s;
 }
 .btn-outline:hover{
-  border-color:var(--navy2);
-  color:var(--navy);
-  background:rgba(31,58,95,.08);
+  background: #FFFFFF;            /* 變成純白底 */
+  color: #0e1f38;                 /* 文字變回深藍色，產生強烈對比 */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 .btn-outline:hover::before{opacity:1}
 
@@ -526,6 +586,13 @@ footer{
   .hero-title { font-size: 36px; }
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
+  .hero-poster {
+    max-height: 300px; /* 在手機上設定較矮的高度上限 */
+    object-fit: cover;  /* 手機版可以考慮用 cover，重點放在月亮中央 */
+  }
+  .hero-title {
+    font-size: 28px; /* 稍微縮小字體避免換行過多 */
+  }
   
   nav{padding:14px 20px}
   .nav-links{
@@ -570,7 +637,9 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <img src="https://i.ibb.co/4ZRzPnKW/image.png" alt="主視覺" class="hero-poster" alt="TZU-TAI Bremen 海報">
+  <!-- 圖片改為背景層 -->
+  <div class="hero-image-bg"></div> 
+  <img src="https://i.ibb.co/4ZRzPnKW/image.png" style="width:100%; visibility:hidden; display:block;">
   <div class="hero-vignette"></div>
   <div class="hero-bottom"></div>
   <div class="hero-wen-cover"></div>
