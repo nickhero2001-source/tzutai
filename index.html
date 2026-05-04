@@ -327,12 +327,12 @@ section{position:relative;z-index:1}
   background-position: right bottom; /* 讓人物對齊右下角，避免懸空 */
   background-repeat: no-repeat;
   
-  opacity: 0.2;       /* 稍微調高一點點，讓夥伴的身影清晰一些 */
+  opacity: 0.35;       /* 稍微調高一點點，讓夥伴的身影清晰一些 */
   
   /* 讓左側邊緣柔和消失 */
-  mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0));
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0));
-  z-index: 1;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+    z-index: 1;
 }
 /* 確保文字內容不會被背景干擾 */
 .story-content {
