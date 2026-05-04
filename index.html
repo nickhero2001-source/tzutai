@@ -706,49 +706,48 @@ footer{
 }
 @media (min-width: 769px) {
   .story {
-    display: flex;
-    align-items: center;
-    padding: 150px 0; /* 增加上下留白，更有高級感 */
+    display: block; 
+    padding: 120px 0;
+    text-align: center; /* 恢復置中 */
   }
 
   .story-content {
-    text-align: left;
-    padding-left: 12%; /* 這是我們的視覺起點線 */
-    max-width: 700px;
+    margin: 0 auto;
+    max-width: 800px;
+    padding-left: 0; /* 移除左側偏移 */
+    text-align: center; /* 恢復置中 */
   }
 
-  /* --- 月亮圖標：靠左對齊，大小微調 --- */
-  .story-icon {
-    display: flex;
-    justify-content: flex-start; /* 讓月亮回到左側軸線上 */
-    margin-bottom: 20px;
-    margin-left: 0; /* 移除之前的偏移修正 */
-  }
-
-  .moon-icon {
-    width: 55px; /* 55px-60px 是最具質感的點綴大小 */
-    height: 55px;
-    object-fit: cover;
-    /* 調整 crop 位置，盡量避開插畫下方的動物剪影，保留黃色月亮感 */
-    object-position: center 10%; 
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.5); /* 增加細緻的白邊，像月亮的光暈 */
-  }
-
-  /* --- 小標：也必須靠左 --- */
   .story-subtitle {
-    text-align: left;
+    text-align: center;
     display: block;
-    margin-bottom: 10px;
-    letter-spacing: 0.5em; /* 增加字距，提升排版質感 */
-    color: #c5a47e;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
   }
 
-  .section-title {
-    font-size: 44px;
-    line-height: 1.3;
-    margin-top: 10px;
+  .story-text p {
+    border-left: none; /* 移除金線裝飾 */
+    padding-left: 0;
+    text-align: center;
+    line-height: 2;
+    font-size: 18px;
+  }
+
+  /* 調整背景照片：讓它安靜地待在背景 */
+  .story-photo-bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12; /* 調淡透明度，確保不干擾置中文字的閱讀 */
+    background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+    z-index: 1;
   }
 }
 </style>
@@ -800,10 +799,6 @@ footer{
   <div class="container">
     <div class="story-content">
       <span class="story-subtitle">OUR STORY</span>
-      <div class="story-icon">
-        <!-- 這裡已換回滿月圖標 -->
-        <img src="https://i.ibb.co/4ZRzPnKW/image.png" alt="Moon Icon" class="moon-icon">
-</div>
       <h2 class="section-title">不同的節奏，<br>同一份美好</h2>
       <div class="story-text">
         <p>在新北市慈泰庇護工場，<br>每一位夥伴都有不同的節奏與方式。</p>
