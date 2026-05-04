@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TZU-TAI Bremen｜新北市慈泰庇護工場</title>
+<meta name="description" content="新北市慈泰庇護工場 — 每一塊餅乾都是一群人一起完成的作品。支持身心障礙者就業，創造有溫度的禮盒。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0e1f38;
+  --navy2:#1F3A5F;
+  --gold:#F6C65B;
+  --gold2:#e8a92a;
+  --cream:#fdf6e3;
+  --warm:#f7f0e0;
+  --text:#1a1a2e;
+  --muted:#5a5a7a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+/* 🔥 全域基礎優化 */
+body{
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  background: var(--warm);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+/* ===== STARS BG ===== */
+.stars-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:transparent;
+}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  padding:18px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(180deg,rgba(14,31,56,.85) 0%,transparent 100%);
+  backdrop-filter:blur(4px);
+  transition:background .4s;
+}
+nav.scrolled{background:rgba(14,31,56,.96)}
+.nav-logo{
+  font-family:'Noto Serif TC',serif;
+  font-size:16px;letter-spacing:.15em;
+  color:var(--gold);
+  text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo span{color:#fff;font-size:12px;letter-spacing:.2em;opacity:.7;display:block}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,.75);font-size:15px;
+  text-decoration:none;letter-spacing:.1em;
+  transition:color .3s;padding-bottom:2px;
+  border-bottom:1px solid transparent;
+}
+.nav-links a:hover{color:var(--gold);border-color:var(--gold)}
+.nav-cta{
+  background:linear-gradient(135deg,#f9d46e 0%,#e8a92a 100%);
+  color:var(--navy);
+  padding:10px 24px;
+  border-radius:999px; /* 改為膠囊狀按鈕 */
+  font-size:13px;font-weight:700;
+  text-decoration:none;letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:all .3s;
+  box-shadow:0 2px 0 #9a6808, 0 4px 15px rgba(232,169,42,.3);
+  position:relative;
+  border:1px solid rgba(255,255,255,.2);
+}
+.nav-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 3px 0 #9a6808, 0 8px 25px rgba(232,169,42,.4);
+}
+.nav-cta:active{transform:translateY(0);box-shadow:0 1px 0 #9a6808}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  background:var(--navy);
+  overflow:hidden;
+}
+
+.hero-poster{
+  width:100%;
+  height:auto;
+  display:block;
+  transform-origin:center center;
+  animation:heroZoom 22s ease-in-out infinite alternate;
+  position:relative;
+  z-index:0;
+}
+@keyframes heroZoom{
+  from{transform:scale(1.0)}
+  to{transform:scale(1.04)}
+}
+
+.hero-vignette{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(14,31,56,.18) 100%),
+    linear-gradient(90deg, rgba(14,31,56,.15) 0%, transparent 15%, transparent 85%, rgba(14,31,56,.15) 100%);
+  pointer-events:none;
+  z-index:1;
+}
+
+.hero-wen-cover{
+  position:absolute;
+  bottom:0;right:0;
+  width:140px;height:140px;
+  background:var(--warm);
+  z-index:5;
+  pointer-events:none;
+  border-top-left-radius:120px;
+}
+
+.hero-bottom{
+  position:absolute;bottom:0;left:0;width:100%;height:40px;
+  background:var(--warm);
+  pointer-events:none;
+  z-index:4;
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  padding:60px 24px 80px;
+  margin-top:0;
+  background:var(--warm);
+  animation:fadeUp .9s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* 🔥 主視覺標題優化 */
+.hero-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(32px, 5vw, 56px); /* 套用更大的視覺層級 */
+  font-weight: 700;
+  color:var(--navy2);
+  line-height:1.4;
+  text-shadow:none;
+  margin-bottom:24px;
+}
+.hero-title em{color:var(--gold2);font-style:normal}
+.hero-quote{
+  font-size:16px;color:var(--muted);
+  letter-spacing:.05em;margin-bottom:32px;
+  font-style:italic;
+  opacity: 0.85;
+}
+
+/* 🔥 按鈕全域優化 */
+.btn{
+  display:inline-block;
+  padding:16px 36px;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.14em;text-decoration:none;
+  transition:all .35s cubic-bezier(.23,1,.32,1);
+  position:relative;overflow:hidden;
+  text-transform:uppercase;
+  border-radius: 999px; /* 膠囊狀 */
+}
+.btn-gold{
+  background:linear-gradient(135deg,#f9d46e 0%,#e8a92a 60%,#f6c65b 100%);
+  color:var(--navy);
+  box-shadow:0 2px 0 #b07c10, 0 6px 20px rgba(232,169,42,.3);
+  border:1px solid rgba(255,255,255,.25);
+}
+.btn-gold::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.25) 0%,transparent 60%);
+}
+.btn-gold::after{
+  content:'';position:absolute;
+  top:50%;left:-60%;
+  width:40%;height:200%;
+  background:rgba(255,255,255,.3);
+  transform:translateY(-50%) skewX(-20deg);
+  transition:left .5s ease;
+}
+.btn-gold:hover{
+  transform:translateY(-3px);
+  box-shadow:0 4px 0 #b07c10, 0 12px 35px rgba(232,169,42,.45);
+  background:linear-gradient(135deg,#fde07a 0%,#f0b52e 60%,#f9d46e 100%);
+}
+.btn-gold:hover::after{left:120%}
+.btn-gold:active{transform:translateY(0);box-shadow:0 1px 0 #b07c10}
+
+.btn-outline{
+  border:1.5px solid rgba(31,58,95,.3);
+  color:var(--navy2);
+  margin-left:14px;
+  background:rgba(31,58,95,.05);
+}
+.btn-outline::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(31,58,95,0) 0%,rgba(31,58,95,.06) 100%);
+  opacity:0;transition:opacity .3s;
+}
+.btn-outline:hover{
+  border-color:var(--navy2);
+  color:var(--navy);
+  background:rgba(31,58,95,.08);
+}
+.btn-outline:hover::before{opacity:1}
+
+/* ===== SECTION COMMONS ===== */
+section{position:relative;z-index:1}
+.section-label{
+  font-size:13px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold2);margin-bottom:12px;display:block;
+  font-weight: 500;
+}
+
+/* 🔥 區塊標題優化 */
+.section-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  line-height:1.4;color:var(--navy2);
+}
+.section-sub{
+  font-size:16px;
+  color:var(--muted);
+  opacity: 0.85;
+  margin-top:16px;
+}
+
+/* ===== STORY ===== */
+.story{
+  padding:120px 24px;
+  background:var(--warm);
+  text-align:center;
+}
+.story-inner{max-width:680px;margin:0 auto}
+.story .section-title{color:var(--navy2)}
+.moon-divider{
+  width:60px;height:60px;
+  background:radial-gradient(circle,var(--gold) 0%,var(--gold2) 60%,transparent 100%);
+  border-radius:50%;margin:40px auto;
+  box-shadow:0 0 30px rgba(246,198,91,.4),0 0 80px rgba(246,198,91,.15);
+  animation:moonPulse 3s ease-in-out infinite;
+}
+@keyframes moonPulse{
+  0%,100%{box-shadow:0 0 30px rgba(246,198,91,.4),0 0 80px rgba(246,198,91,.15)}
+  50%{box-shadow:0 0 50px rgba(246,198,91,.6),0 0 120px rgba(246,198,91,.25)}
+}
+.story p.section-sub {
+  font-size: 18px !important; /* 故事區塊文字稍微放大帶出氛圍 */
+  line-height: 2 !important;
+}
+
+/* ===== VALUES ===== */
+.values{
+  padding:120px 24px;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+}
+.values::before{
+  content:'';position:absolute;
+  top:-100px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(246,198,91,.08) 0%,transparent 70%);
+}
+.values-inner{max-width:1060px;margin:0 auto;text-align:center}
+.values .section-title{color:#fff}
+.values .section-sub{color:rgba(255,255,255,.65)}
+.value-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:28px;margin-top:60px;
+}
+
+.value-card{
+  background:linear-gradient(160deg,#0e1f38 0%,#152d50 50%,#0e1f38 100%);
+  border:1px solid rgba(246,198,91,.25);
+  border-radius:24px;
+  padding:0 0 32px;
+  overflow:hidden;
+  position:relative;
+  transition:transform .4s cubic-bezier(.23,1,.32,1), box-shadow .4s, border-color .4s;
+  box-shadow:0 8px 32px rgba(0,0,0,.35);
+}
+
+.value-card::before{
+  content:'';
+  display:block;
+  height:3px;
+  background:linear-gradient(90deg,transparent,#f9d46e 30%,#fff8d0 50%,#f9d46e 70%,transparent);
+  position:absolute;top:0;left:0;right:0;
+  z-index:2;
+  opacity:.8;
+}
+
+.value-card::after{
+  content:'✦';
+  position:absolute;top:10px;right:14px;
+  color:rgba(246,198,91,.4);font-size:12px;
+  z-index:2;
+}
+
+.value-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:rgba(246,198,91,.55);
+  box-shadow:0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(246,198,91,.12);
+}
+
+.value-img-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 50% 80%,rgba(246,198,91,.08) 0%,transparent 70%);
+}
+.value-animal-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform .5s cubic-bezier(.23,1,.32,1);
+  mix-blend-mode:normal;
+}
+.value-card:hover .value-animal-img{
+  transform:scale(1.06);
+}
+
+.value-foil-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255,245,180,.18) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size:200% 100%;
+  background-position:200% 0;
+  transition:background-position .6s ease;
+  pointer-events:none;
+  z-index:3;
+}
+.value-card:hover .value-foil-shine{
+  background-position:-200% 0;
+}
+
+/* 🔥 卡片標題與內文優化 */
+.value-title{
+  font-family:'Noto Serif TC',serif;
+  font-size:20px;
+  font-weight: 700;
+  color:var(--gold);
+  margin:24px 20px 12px;
+  letter-spacing:.08em;
+  background:linear-gradient(135deg,#f9d46e 0%,#fff5b0 45%,#e8a92a 55%,#f9d46e 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.value-desc{
+  font-size:15px;
+  color:rgba(255,255,255,.7);
+  margin:0 24px;
+}
+
+/* ===== PRODUCTS ===== */
+.products{
+  padding:120px 24px;
+  background:#fff;
+}
+.products-inner{max-width:1000px;margin:0 auto}
+.products-header{text-align:center;margin-bottom:60px}
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+}
+.product-card{
+  border-radius:24px;overflow:hidden;
+  background:var(--warm);
+  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  transition:transform .35s,box-shadow .35s;
+  position:relative;
+}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.product-img-wrap{
+  height:240px;overflow:hidden;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.product-body{padding:32px}
+.product-name{
+  font-family:'Noto Serif TC',serif;
+  font-size:20px;
+  font-weight: 700;
+  color:var(--navy2);margin-bottom:12px;
+}
+.product-desc{font-size:15px;color:var(--muted);}
+.product-badge{
+  position:absolute;top:20px;right:20px;
+  background:var(--gold);color:var(--navy);
+  font-size:13px;font-weight:700;
+  padding:6px 16px;border-radius:99px;
+  letter-spacing: 1px;
+}
+
+/* ===== ENTERPRISE ===== */
+.enterprise{
+  padding:120px 24px;
+  background:linear-gradient(160deg,#0e1f38 0%,#1a3560 50%,#0e1f38 100%);
+  position:relative;overflow:hidden;
+}
+.enterprise::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(246,198,91,.06) 0%,transparent 65%);
+}
+.enterprise-inner{
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:60px;
+  align-items:center;position:relative;z-index:1;
+}
+.enterprise-text .section-title{color:#fff}
+.enterprise-text .section-sub{color:rgba(255,255,255,.65)}
+.benefits{list-style:none;margin-top:32px}
+.benefits li{
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.85);
+  font-size:16px;display:flex;gap:16px;
+  align-items: center;
+}
+.benefits li::before{
+  content:'✦';color:var(--gold);
+  flex-shrink:0;font-size: 14px;
+}
+.enterprise-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(246,198,91,.2);
+  border-radius:32px;padding:48px 40px;
+  backdrop-filter: blur(10px);
+}
+.enterprise-card h3{
+  font-family:'Noto Serif TC',serif;
+  color:var(--gold);font-size:22px;margin-bottom:24px;
+  font-weight: 700;
+}
+.service-list{list-style:none}
+.service-list li{
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  color:rgba(255,255,255,.75);
+  font-size:15px;display:flex;gap:12px;align-items:center;
+}
+.service-list li::before{content:'•';color:var(--gold)}
+.enterprise .btn-gold{margin-top:36px;display:inline-block}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#07101e;
+  color:rgba(255,255,255,.5);
+  padding:60px 40px;
+}
+.footer-inner{
+  max-width:1000px;margin:0 auto;
+  display:flex;flex-wrap:wrap;
+  justify-content:space-between;gap:40px;align-items:flex-start;
+}
+.footer-brand .logo{
+  font-family:'Noto Serif TC',serif;
+  color:var(--gold);font-size:20px;
+  font-weight: 700;
+  letter-spacing:.1em;display:block;margin-bottom:12px;
+}
+.footer-brand p{font-size:14px;}
+.footer-links{font-size:14px}
+.footer-links h4{
+  color:rgba(255,255,255,.7);
+  font-size:13px;letter-spacing:.2em;
+  margin-bottom:16px;
+  font-weight: 700;
+}
+.footer-links a{
+  display:block;color:rgba(255,255,255,.45);
+  text-decoration:none;padding:6px 0;
+  transition:color .3s;
+}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.06);
+  margin-top:60px;padding-top:32px;
+  text-align:center;font-size:13px;
+  color:rgba(255,255,255,.3);
+}
+.footer-quote{
+  font-family:'Noto Serif TC',serif;
+  font-style:italic;color:rgba(255,255,255,.4);
+  margin-top:12px;font-size:13px;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* 🔥 MOBILE RWD 優化 */
+@media(max-width:768px){
+  .hero-title { font-size: 36px; }
+  .section-title { font-size: 28px; }
+  .story, .values, .products, .enterprise { padding: 80px 20px; }
+  
+  nav{padding:14px 20px}
+  .nav-links{
+    display:none;flex-direction:column;gap:16px;
+    position:fixed;inset:0;background:rgba(14,31,56,.97);
+    align-items:center;justify-content:center;
+    font-size:18px;z-index:200;
+  }
+  .nav-links.open{display:flex}
+  .nav-cta{display:none}
+  .hamburger{display:flex;z-index:300}
+  .hero-content{padding-bottom:60px}
+  .btn-outline { margin-left: 0; margin-top: 16px; }
+  .enterprise-inner{grid-template-columns:1fr}
+  .enterprise-card{ padding: 32px 24px; }
+  .footer-inner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- Stars canvas -->
+<canvas class="stars-bg" id="starsCanvas"></canvas>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    TZU-TAI Bremen
+    <span>新北市慈泰庇護工場</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story">我們的故事</a></li>
+    <li><a href="#values">夥伴特質</a></li>
+    <li><a href="#products">產品系列</a></li>
+    <li><a href="#enterprise">企業合作</a></li>
+  </ul>
+  <a href="#enterprise" class="nav-cta">洽詢採購</a>
+  <button class="hamburger" id="hamburger" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://i.ibb.co/4ZRzPnKW/image.png" alt="主視覺" class="hero-poster" alt="TZU-TAI Bremen 海報">
+  <div class="hero-vignette"></div>
+  <div class="hero-bottom"></div>
+  <div class="hero-wen-cover"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      每一塊餅乾<br>都是一群人<em>一起</em>完成的作品
+    </h1>
+    <p class="hero-quote">新北市慈泰庇護工場 · TZU-TAI Bremen</p>
+    <a href="#products" class="btn btn-gold">探索我們的商品</a>
+    <a href="#story" class="btn btn-outline">了解更多</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <span class="section-label">Our Story</span>
+    <div class="moon-divider"></div>
+    <h2 class="section-title reveal">不同的節奏，<br>同一份美好</h2>
+    <p class="section-sub reveal reveal-delay-1" style="margin-top:30px;font-family:'Noto Serif TC',serif;color:#333">
+      在新北市慈泰庇護工場，<br>
+      每一位夥伴都有不同的節奏與方式。<br><br>
+      就像布萊梅音樂家的故事——<br>
+      每個人帶著自己獨特的聲音出發，<br>
+      當這些不同聚在一起，<br>
+      就能完成一件美好的事。
+    </p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="values-inner">
+    <span class="section-label reveal" style="color:rgba(246,198,91,.6)">Our Team</span>
+    <h2 class="section-title reveal">不同特質，一起創造價值</h2>
+    <p class="section-sub reveal">每一位夥伴都是不可缺少的音符</p>
+    <div class="value-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-img-wrap">
+          <img src="https://i.ibb.co/jvqZWvpb/image.png" alt="驢" class="value-animal-img">
+          <div class="value-foil-shine"></div>
+        </div>
+        <div class="value-title">共好｜溫暖職場</div>
+        <div class="value-desc">不只是障礙者的圓夢之地，更堅持選用友善環境的原物料。讓每一份產品，都承載著對生命的尊重。</div>
+      </div>
+
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-img-wrap">
+          <img src="https://i.ibb.co/PZxmygP7/image.png" alt="狗" class="value-animal-img">
+          <div class="value-foil-shine"></div>
+        </div>
+        <div class="value-title">承諾｜嚴謹守護</div>
+        <div class="value-desc">導入 HACCP 與 ISO22000 標準。從生產到包裝，我們用最高規格的自我要求，守護您與家人的每一口安心。</div>
+      </div>
+
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-img-wrap">
+          <img src="https://i.ibb.co/DPtcrrZd/image.png" alt="貓" class="value-animal-img">
+          <div class="value-foil-shine"></div>
+        </div>
+        <div class="value-title">拾光｜傳遞溫度</div>
+        <div class="value-desc">將獨特質感融入細節。讓這份禮物不只是傳達心意，更是一場關於美與溫度的生活實踐。</div>
+      </div>
+
+      <div class="value-card reveal reveal-delay-4">
+        <div class="value-img-wrap">
+          <img src="https://i.ibb.co/jvBpjy9t/image.png" alt="雞" class="value-animal-img">
+          <div class="value-foil-shine"></div>
+        </div>
+        <div class="value-title">純粹｜還原真味</div>
+        <div class="value-desc">拒絕過度化學修飾，專注於食材本質。在純淨的香氣中，讓您嚐到最誠實、最久違的原始美味。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="products-header">
+      <span class="section-label reveal">Our Products</span>
+      <h2 class="section-title reveal">這不只是餅乾</h2>
+      <p class="section-sub reveal">每一口，都承載著夥伴們的努力與驕傲</p>
+    </div>
+    <div class="product-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:800px;margin:0 auto">
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 200 180" width="200" height="180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="giftGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a3a6a"/>
+                <stop offset="100%" stop-color="#0e1f38"/>
+              </linearGradient>
+            </defs>
+            <rect x="45" y="90" width="110" height="72" rx="4" fill="url(#giftGrad)"/>
+            <rect x="40" y="72" width="120" height="24" rx="4" fill="#243f6e"/>
+            <rect x="94" y="72" width="12" height="90" fill="#F6C65B" opacity=".9"/>
+            <rect x="40" y="80" width="120" height="8" fill="#F6C65B" opacity=".9"/>
+            <path d="M100 72 Q80 52 68 60 Q60 68 76 74 Q88 78 100 72Z" fill="#F6C65B"/>
+            <path d="M100 72 Q120 52 132 60 Q140 68 124 74 Q112 78 100 72Z" fill="#F6C65B"/>
+            <circle cx="100" cy="72" r="8" fill="#e8a92a"/>
+            <path d="M96 72 Q84 82 78 92" stroke="#F6C65B" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M104 72 Q116 82 122 92" stroke="#F6C65B" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="70" cy="120" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="130" cy="120" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="70" cy="145" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="130" cy="145" r="3" fill="rgba(246,198,91,.25)"/>
+            <path d="M60 80 L61.5 85 L66 83.5 L62 87 L63.5 92 L60 88.5 L56.5 92 L58 87 L54 83.5 L58.5 85Z" fill="rgba(246,198,91,.5)"/>
+            <path d="M145 95 L146 98 L149 97 L147 99.5 L148 102.5 L145 100.5 L142 102.5 L143 99.5 L141 97 L144 98Z" fill="rgba(246,198,91,.4)"/>
+          </svg>
+        </div>
+        <div class="product-badge">熱銷</div>
+        <div class="product-body">
+          <div class="product-name">企業客製禮盒</div>
+          <div class="product-desc">精緻包裝、客製化設計，傳遞有溫度的心意，為每一個重要時刻留下記憶</div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 200 180" width="200" height="180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f9d46e" stop-opacity=".9"/>
+                <stop offset="60%" stop-color="#e8a92a" stop-opacity=".6"/>
+                <stop offset="100%" stop-color="#e8a92a" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="80" r="55" fill="url(#moonGlow)"/>
+            <circle cx="100" cy="80" r="38" fill="#f9d46e"/>
+            <circle cx="115" cy="68" r="30" fill="#1F3A5F"/>
+            <circle cx="50" cy="45" r="2.5" fill="#F6C65B"/>
+            <circle cx="158" cy="55" r="2" fill="#F6C65B"/>
+            <circle cx="40" cy="110" r="1.8" fill="#F6C65B" opacity=".7"/>
+            <circle cx="165" cy="100" r="2.5" fill="#F6C65B" opacity=".8"/>
+            <circle cx="75" cy="140" r="1.5" fill="#F6C65B" opacity=".6"/>
+            <circle cx="135" cy="145" r="2" fill="#F6C65B" opacity=".7"/>
+            <path d="M50 45 L51.2 49 L55 50 L51.2 51 L50 55 L48.8 51 L45 50 L48.8 49Z" fill="#F6C65B" opacity=".9"/>
+            <path d="M158 55 L159 58 L162 59 L159 60 L158 63 L157 60 L154 59 L157 58Z" fill="#F6C65B"/>
+            <rect x="80" y="120" width="40" height="44" rx="20" fill="rgba(246,198,91,.15)" stroke="rgba(246,198,91,.3)" stroke-width="1"/>
+            <rect x="96" y="115" width="8" height="8" rx="2" fill="rgba(246,198,91,.4)"/>
+            <line x1="100" y1="164" x2="100" y2="174" stroke="rgba(246,198,91,.4)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-name">季節限定企劃</div>
+          <div class="product-desc">節慶限定風味與包裝，讓每一個值得紀念的節日，都有我們溫暖陪伴</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="enterprise" id="enterprise">
+  <div class="enterprise-inner">
+    <div class="enterprise-text">
+      <span class="section-label reveal" style="color:rgba(246,198,91,.6)">Corporate Partnership</span>
+      <h2 class="section-title reveal">企業合作 / ESG 採購</h2>
+      <p class="section-sub reveal">您的每一筆採購，不只是禮盒，更是一份真實的社會影響力</p>
+      <ul class="benefits reveal">
+        <li>支持身心障礙者穩定就業</li>
+        <li>創造有尊嚴的實質工作機會</li>
+        <li>提升企業 ESG 實質貢獻</li>
+        <li>獲得公益合作夥伴認證</li>
+      </ul>
+      <a href="mailto:service@tzutai.org.tw" class="btn btn-gold reveal">立即洽詢企業合作</a>
+    </div>
+    <div class="enterprise-card reveal">
+      <h3>我們提供的服務</h3>
+      <ul class="service-list">
+        <li>企業禮盒客製化設計</li>
+        <li>大量採購優惠方案</li>
+        <li>節慶活動聯名企劃</li>
+        <li>公益合作專案規劃</li>
+        <li>ESG 報告書素材提供</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo">TZU-TAI Bremen</span>
+      <p>新北市慈泰庇護工場<br>讓每一個人都有能力創造價值</p>
+    </div>
+    <div class="footer-links">
+      <h4>快速連結</h4>
+      <a href="#story">我們的故事</a>
+      <a href="#values">夥伴特質</a>
+      <a href="#products">產品系列</a>
+      <a href="#enterprise">企業合作</a>
+    </div>
+    <div class="footer-links">
+      <h4>聯絡方式</h4>
+      <a href="mailto:service@tzutai.org.tw">service@tzutai.org.tw</a>
+      <a href="#">新北市庇護工場</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 新北市慈泰庇護工場 · TZU-TAI Bremen · 版權所有
+    <div class="footer-quote">"Success is not the key to happiness — Happiness is the key to success"</div>
+  </div>
+</footer>
+
+<script>
+// === Stars ===
+(function(){
+  const c=document.getElementById('starsCanvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let stars=[];
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
+  function initStars(){
+    stars=[];
+    for(let i=0;i<120;i++){
+      stars.push({
+        x:Math.random()*c.width,
+        y:Math.random()*c.height,
+        r:Math.random()*1.5+.3,
+        a:Math.random(),
+        speed:Math.random()*.015+.005,
+        phase:Math.random()*Math.PI*2
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    const t=Date.now()/1000;
+    stars.forEach(s=>{
+      const opacity=(Math.sin(t*s.speed*6+s.phase)+1)/2*.6+.2;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(246,198,91,${opacity*s.a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{resize();initStars()});
+  resize();initStars();draw();
+})();
+
+// === Nav scroll ===
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// === Hamburger ===
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('#navLinks a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+// === Scroll reveal ===
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
