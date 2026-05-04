@@ -360,12 +360,21 @@ section{position:relative;z-index:1}
 }
 .story-inner{max-width:680px;margin:0 auto}
 .story .section-title{color:var(--navy2)}
-.moon-divider{
-  width:60px;height:60px;
-  background:radial-gradient(circle,var(--gold) 0%,var(--gold2) 60%,transparent 100%);
-  border-radius:50%;margin:40px auto;
-  box-shadow:0 0 30px rgba(246,198,91,.4),0 0 80px rgba(246,198,91,.15);
-  animation:moonPulse 3s ease-in-out infinite;
+.story-icon {
+  margin-bottom: 15px; /* 控制月亮與標題的距離 */
+}
+
+.moon-icon {
+  width: 40px;               /* 設定您想要的小小尺寸 */
+  height: 40px;
+  object-fit: cover;         /* 關鍵：強制裁切 */
+  object-position: 50% 20%;  /* 關鍵：調整位置，讓圓形對準插畫中的月亮 */
+  border-radius: 50%;        /* 變成正圓形 */
+  background: #ffeb3b;       /* 預設底色，確保加載時也是圓的 */
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5); /* 淡淡的月光效果 */
+  
+  /* 如果您是電腦版置左排版，請加上這行 */
+  display: block; 
 }
 @keyframes moonPulse{
   0%,100%{box-shadow:0 0 30px rgba(246,198,91,.4),0 0 80px rgba(246,198,91,.15)}
@@ -643,7 +652,7 @@ footer{
   }
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
-
+  .moon-icon { margin: 0 auto;}
   /* 2. 重點：調整 Hero 區塊的排版 */
   .hero {
     min-height: 380px; /* 確保有足夠高度容納內容 */
@@ -746,8 +755,8 @@ footer{
       <span class="story-subtitle">OUR STORY</span>
       <div class="story-icon">
         <!-- 這裡已換回滿月圖標 -->
-        <img src="https://i.ibb.co/F4tpgpSS/2.png" alt="Full Moon" class="moon-icon">
-      </div>
+        <img src="https://i.ibb.co/4ZRzPnKW/image.png" alt="Moon Icon" class="moon-icon">
+</div>
       <h2 class="section-title">不同的節奏，<br>同一份美好</h2>
       <div class="story-text">
         <p>在新北市慈泰庇護工場，<br>每一位夥伴都有不同的節奏與方式。</p>
