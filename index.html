@@ -704,6 +704,31 @@ footer{
   .enterprise-card { padding: 32px 24px; }
   .footer-inner { flex-direction: column; }
 }
+  @media (min-width: 769px) {
+  /* 讓圖示容器維持置中，不隨文字靠左 */
+  .story-icon {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    width: 100%;             /* 佔滿寬度才能置中 */
+    margin-bottom: 25px;     /* 增加與標題的間距 */
+    margin-left: -12%;       /* 補償 content 的 padding-left，讓它對準螢幕中心 */
+  }
+
+  .moon-icon {
+    width: 60px;               /* 稍微放大，更有存在感 */
+    height: 60px;
+    object-fit: cover;
+    object-position: 50% 20%;  /* 維持裁切月亮位置 */
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 235, 59, 0.4); /* 增加光暈感 */
+  }
+  
+  .story-content {
+    /* 確保文字依然靠左，但整體重心更平衡 */
+    text-align: left;
+    padding-left: 12%;
+  }
+}
 </style>
 </head>
 <body>
