@@ -695,6 +695,77 @@ footer{
   .enterprise-card { padding: 32px 24px; }
   .footer-inner { flex-direction: column; }
 }
+  /* 僅針對電腦版優化，手機版不受影響 */
+@media (min-width: 769px) {
+  .story {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 0;
+    background-color: #fdfaf5;
+    overflow: hidden;
+  }
+
+  /* 工作夥伴背景照片 */
+  .story-photo-bg {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    height: 80%;
+    background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.18; /* 柔和的透明度，增加質感 */
+    /* 圓潤的漸層遮罩 */
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0));
+    z-index: 1;
+  }
+
+  .story-content {
+    position: relative;
+    z-index: 2;
+    text-align: left; /* 電腦版靠左排版更有故事感 */
+    padding-left: 12%;
+    max-width: 650px;
+  }
+
+  /* 滿月圖標樣式 */
+  .moon-icon {
+    width: 80px;
+    height: auto;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2)); /* 淡淡的月光暈影 */
+  }
+
+  .story-subtitle {
+    display: block;
+    letter-spacing: 0.4em;
+    font-size: 13px;
+    color: #c5a47e;
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-size: 46px;
+    color: #0e1f38;
+    line-height: 1.4;
+    margin-bottom: 35px;
+  }
+
+  .story-text p {
+    font-size: 18px;
+    line-height: 2.2; /* 寬廣的行高增加閱讀舒適度 */
+    color: #555;
+    border-left: 2px solid #e0c5a0; /* 左側細緻的金線裝飾 */
+    padding-left: 25px;
+    margin-bottom: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -741,14 +812,13 @@ footer{
 <!-- STORY -->
 <section id="story" class="story">
   <div class="story-photo-bg"></div>
-
   <div class="container">
     <div class="story-content">
       <span class="story-subtitle">OUR STORY</span>
       <div class="story-icon">
-  <!-- 請更換為正確的太陽圖示網址，或使用您原本的 icon 路徑 -->
-  <img src="https://i.ibb.co/LzXf5mF/sun-icon.png" alt="sun" style="width: 50px; height: auto;">
-</div>
+        <!-- 這裡已換回滿月圖標 -->
+        <img src="https://i.ibb.co/4ZRzPnKW/image.png" alt="Full Moon" class="moon-icon">
+      </div>
       <h2 class="section-title">不同的節奏，<br>同一份美好</h2>
       <div class="story-text">
         <p>在新北市慈泰庇護工場，<br>每一位夥伴都有不同的節奏與方式。</p>
