@@ -1,9 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TZU-TAI Bremen｜新北市慈泰庇護工場</title>
+
+<!-- ✅ 安全修正 1：Content Security Policy -->
+
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'self';
+img-src 'self' https://i.ibb.co data:;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src https://fonts.gstatic.com;
+script-src 'self' 'unsafe-inline';
+connect-src 'none';">
+
+<!-- ✅ 安全修正 2：防止 MIME 類型嗅探 -->
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- ✅ 安全修正 3：防止 Clickjacking（iframe 嵌入攻擊） -->
+
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+
+<!-- ✅ 安全修正 4：Referrer 隱私控制，避免洩漏來源網址 -->
+
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
 <link rel="preload" as="image" href="https://i.ibb.co/Z1GMGTNn/image.png">
 <meta name="description" content="新北市慈泰庇護工場 — 每一塊餅乾都是一群人一起完成的作品。支持身心障礙者就業，創造有溫度的禮盒。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +48,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
-/* 🔥 全域基礎優化 */
 body{
   font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
   background: var(--warm);
@@ -71,7 +94,7 @@ nav.scrolled{background:rgba(14,31,56,.96)}
   background:linear-gradient(135deg,#f9d46e 0%,#e8a92a 100%);
   color:var(--navy);
   padding:10px 24px;
-  border-radius:999px; /* 改為膠囊狀按鈕 */
+  border-radius:999px;
   font-size:13px;font-weight:700;
   text-decoration:none;letter-spacing:.12em;
   text-transform:uppercase;
@@ -92,23 +115,23 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 .hero{
   position: relative;
   width: 100%;
-  height: auto;      /* 確保高度隨隱形圖片自動撐開 */
-  min-height: 300px; /* 設定一個最小高度當作保險 */
+  height: auto;
+  min-height: 300px;
   background: #0e1f38;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* 改為垂直排列 */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .hero-poster{
   width: 100%;
-  height: auto;           /* 讓圖片根據寬度自動決定高度，避免變形 */
-  max-height: 550px;      /* 設定最大高度上限，防止在寬螢幕下太大 */
-  object-fit: contain;    /* 改用 contain 確保整張圖都能完整呈現 */
-  object-position: bottom; /* 讓圖片貼著底部，對接下方的內容區塊 */
-  background-color: #0e1f38; /* 設定與圖片底色一致的深藍色，補足兩側空隙 */
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+  object-position: bottom;
+  background-color: #0e1f38;
   display: none;
   position: relative;
   z-index: 0;
@@ -120,7 +143,7 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 }
 
 .hero-image-bg {
-position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -130,16 +153,12 @@ position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
-  /* 關鍵：4秒動畫，結束後停留在最後一格 (forwards) */
-  animation: heroBgFade 4s ease forwards; 
+  animation: heroBgFade 4s ease forwards;
 }
 @keyframes heroBgFade {
-0% {  opacity: 0; transform: scale(1.05); 
-  }
-20% { opacity: 1; transform: scale(1); 
-  } /* 圖片先完全顯現，讓使用者看清楚插畫 */
-100% { opacity: 0.4; /* 最終變淡的數值，越小越淡 */transform: scale(1); 
-  }
+  0% {  opacity: 0; transform: scale(1.05); }
+  20% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.4; transform: scale(1); }
 }
 
 .hero-vignette{
@@ -159,7 +178,7 @@ position: absolute;
   z-index:5;
   pointer-events:none;
   border-top-left-radius:120px;
-  display: none; /* 隱藏這個弧形元素 */
+  display: none;
 }
 
 .hero-bottom{
@@ -170,55 +189,46 @@ position: absolute;
 }
 
 .hero-content{
-/* 強制浮動在最上層 */
-  position: absolute; 
-  top: 50%;           /* 垂直置中 */
-  left: 50%;          /* 水平置中 */
-  transform: translate(-50%, -50%); /* 修正中心點偏移 */
-  
-  z-index: 5;         /* 確保層級高於背景圖與遮罩 */
-  width: 90%;         /* 設定寬度避免文字貼邊 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 90%;
   max-width: 800px;
   text-align: center;
   padding: 0;
   margin: 0;
   background: transparent;
-
-  /* 維持您要的動畫效果 */
   opacity: 0;
-  animation: contentFadeUp 1.5s ease 2.5s forwards; 
+  animation: contentFadeUp 1.5s ease 2.5s forwards;
 }
 @keyframes contentFadeUp {
-  from { 
-    opacity: 0; 
-    transform: translate(-50%, calc(-50% + 30px)); /* 從中心點下方 30px 開始 */
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 30px));
   }
-  to { 
-    opacity: 1; 
-    transform: translate(-50%, -50%); /* 回到正中心 */
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }
 
-/* 🔥 主視覺標題優化 */
 .hero-title{
- color: #FFFFFF !important;
+  color: #FFFFFF !important;
   font-size: 42px;
   font-weight: 700;
-  /* 加上雙層陰影：一層模糊擴散，一層深色邊框 */
-  text-shadow: 
-    0 0 15px rgba(0, 0, 0, 0.8), 
-    2px 2px 4px rgba(0, 0, 0, 1); 
+  text-shadow:
+    0 0 15px rgba(0, 0, 0, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 1);
   line-height: 1.4;
 }
-.hero-title em{color: #FFD700 !important; /* 強調「一起」的金色 */
-  font-style: normal;
-}
+.hero-title em{color: #FFD700 !important;font-style: normal;}
 .hero-quote{
   color: #f0f0f0;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* 🔥 按鈕全域優化 */
 .btn{
   display:inline-block;
   padding:16px 36px;
@@ -228,7 +238,7 @@ position: absolute;
   transition:all .35s cubic-bezier(.23,1,.32,1);
   position:relative;overflow:hidden;
   text-transform:uppercase;
-  border-radius: 999px; /* 膠囊狀 */
+  border-radius: 999px;
 }
 .btn-gold{
   background:linear-gradient(135deg,#f9d46e 0%,#e8a92a 60%,#f6c65b 100%);
@@ -263,13 +273,11 @@ position: absolute;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  
-  /* 強化視覺設定 */
-  border: 2px solid #FFFFFF;      /* 使用純白邊框 */
-  color: #FFFFFF;                 /* 文字改為純白 */
-  background: rgba(255, 255, 255, 0.1); /* 淡淡的白色底，幫助在深色背景跳脫 */
-  backdrop-filter: blur(5px);      /* 增加一點毛玻璃效果，更有質感 */
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); /* 文字陰影，防止背景太亮時看不見字 */
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
 }
 .btn-outline::before{
@@ -278,8 +286,8 @@ position: absolute;
   opacity:0;transition:opacity .3s;
 }
 .btn-outline:hover{
-  background: #FFFFFF;            /* 變成純白底 */
-  color: #0e1f38;                 /* 文字變回深藍色，產生強烈對比 */
+  background: #FFFFFF;
+  color: #0e1f38;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
@@ -293,7 +301,6 @@ section{position:relative;z-index:1}
   font-weight: 500;
 }
 
-/* 🔥 區塊標題優化 */
 .section-title{
   font-family:'Noto Serif TC',serif;
   font-size:clamp(28px, 4vw, 36px);
@@ -312,29 +319,23 @@ section{position:relative;z-index:1}
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  /* 確保底色與照片背景接近 */
-  background-color: #fdfaf5; 
+  background-color: #fdfaf5;
 }
-  .story-photo-bg {
+.story-photo-bg {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50%;         /* 維持右側版面 */
+  width: 50%;
   height: 100%;
-  /* 關鍵修正：改用 contain 確保圖片不被裁切 */
   background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
-  background-size: contain;    
-  background-position: right bottom; /* 讓人物對齊右下角，避免懸空 */
+  background-size: contain;
+  background-position: right bottom;
   background-repeat: no-repeat;
-  
-  opacity: 0.35;       /* 稍微調高一點點，讓夥伴的身影清晰一些 */
-  
-  /* 讓左側邊緣柔和消失 */
+  opacity: 0.35;
   mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
-    z-index: 1;
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%);
+  z-index: 1;
 }
-/* 確保文字內容不會被背景干擾 */
 .story-content {
   position: relative;
   z-index: 2;
@@ -342,7 +343,6 @@ section{position:relative;z-index:1}
   max-width: 800px;
   margin: 0 auto;
 }
-  /* 強化標題顯眼度 */
 .section-title {
   color: #0e1f38;
   font-size: 36px;
@@ -350,8 +350,6 @@ section{position:relative;z-index:1}
   margin: 20px 0;
   line-height: 1.5;
 }
-
-/* 故事內文排版 */
 .story-text p {
   color: #4a4a4a;
   line-height: 2;
@@ -360,28 +358,19 @@ section{position:relative;z-index:1}
 }
 .story-inner{max-width:680px;margin:0 auto}
 .story .section-title{color:var(--navy2)}
-.story-icon {
-  margin-bottom: 15px; /* 控制月亮與標題的距離 */
-}
-
+.story-icon {margin-bottom: 15px;}
 .moon-icon {
-  width: 40px;               /* 設定您想要的小小尺寸 */
+  width: 40px;
   height: 40px;
-  object-fit: cover;         /* 關鍵：強制裁切 */
-  object-position: 50% 20%;  /* 關鍵：調整位置，讓圓形對準插畫中的月亮 */
-  border-radius: 50%;        /* 變成正圓形 */
-  background: #ffeb3b;       /* 預設底色，確保加載時也是圓的 */
-  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5); /* 淡淡的月光效果 */
-  
-  /* 如果您是電腦版置左排版，請加上這行 */
-  display: block; 
-}
-@keyframes moonPulse{
-  0%,100%{box-shadow:0 0 30px rgba(246,198,91,.4),0 0 80px rgba(246,198,91,.15)}
-  50%{box-shadow:0 0 50px rgba(246,198,91,.6),0 0 120px rgba(246,198,91,.25)}
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50%;
+  background: #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+  display: block;
 }
 .story p.section-sub {
-  font-size: 18px !important; /* 故事區塊文字稍微放大帶出氛圍 */
+  font-size: 18px !important;
   line-height: 2 !important;
 }
 
@@ -405,7 +394,6 @@ section{position:relative;z-index:1}
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:28px;margin-top:60px;
 }
-
 .value-card{
   background:linear-gradient(160deg,#0e1f38 0%,#152d50 50%,#0e1f38 100%);
   border:1px solid rgba(246,198,91,.25);
@@ -416,7 +404,6 @@ section{position:relative;z-index:1}
   transition:transform .4s cubic-bezier(.23,1,.32,1), box-shadow .4s, border-color .4s;
   box-shadow:0 8px 32px rgba(0,0,0,.35);
 }
-
 .value-card::before{
   content:'';
   display:block;
@@ -426,20 +413,17 @@ section{position:relative;z-index:1}
   z-index:2;
   opacity:.8;
 }
-
 .value-card::after{
   content:'✦';
   position:absolute;top:10px;right:14px;
   color:rgba(246,198,91,.4);font-size:12px;
   z-index:2;
 }
-
 .value-card:hover{
   transform:translateY(-10px) scale(1.02);
   border-color:rgba(246,198,91,.55);
   box-shadow:0 20px 50px rgba(0,0,0,.45), 0 0 40px rgba(246,198,91,.12);
 }
-
 .value-img-wrap{
   position:relative;
   width:100%;
@@ -455,10 +439,7 @@ section{position:relative;z-index:1}
   transition:transform .5s cubic-bezier(.23,1,.32,1);
   mix-blend-mode:normal;
 }
-.value-card:hover .value-animal-img{
-  transform:scale(1.06);
-}
-
+.value-card:hover .value-animal-img{transform:scale(1.06);}
 .value-foil-shine{
   position:absolute;inset:0;
   background:linear-gradient(115deg,
@@ -474,11 +455,7 @@ section{position:relative;z-index:1}
   pointer-events:none;
   z-index:3;
 }
-.value-card:hover .value-foil-shine{
-  background-position:-200% 0;
-}
-
-/* 🔥 卡片標題與內文優化 */
+.value-card:hover .value-foil-shine{background-position:-200% 0;}
 .value-title{
   font-family:'Noto Serif TC',serif;
   font-size:20px;
@@ -491,17 +468,10 @@ section{position:relative;z-index:1}
   -webkit-text-fill-color:transparent;
   background-clip:text;
 }
-.value-desc{
-  font-size:15px;
-  color:rgba(255,255,255,.7);
-  margin:0 24px;
-}
+.value-desc{font-size:15px;color:rgba(255,255,255,.7);margin:0 24px;}
 
 /* ===== PRODUCTS ===== */
-.products{
-  padding:120px 24px;
-  background:#fff;
-}
+.products{padding:120px 24px;background:#fff;}
 .products-inner{max-width:1000px;margin:0 auto}
 .products-header{text-align:center;margin-bottom:60px}
 .product-grid{
@@ -525,8 +495,7 @@ section{position:relative;z-index:1}
 .product-body{padding:32px}
 .product-name{
   font-family:'Noto Serif TC',serif;
-  font-size:20px;
-  font-weight: 700;
+  font-size:20px;font-weight: 700;
   color:var(--navy2);margin-bottom:12px;
 }
 .product-desc{font-size:15px;color:var(--muted);}
@@ -565,10 +534,7 @@ section{position:relative;z-index:1}
   font-size:16px;display:flex;gap:16px;
   align-items: center;
 }
-.benefits li::before{
-  content:'✦';color:var(--gold);
-  flex-shrink:0;font-size: 14px;
-}
+.benefits li::before{content:'✦';color:var(--gold);flex-shrink:0;font-size: 14px;}
 .enterprise-card{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(246,198,91,.2);
@@ -591,11 +557,7 @@ section{position:relative;z-index:1}
 .enterprise .btn-gold{margin-top:36px;display:inline-block}
 
 /* ===== FOOTER ===== */
-footer{
-  background:#07101e;
-  color:rgba(255,255,255,.5);
-  padding:60px 40px;
-}
+footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 .footer-inner{
   max-width:1000px;margin:0 auto;
   display:flex;flex-wrap:wrap;
@@ -604,23 +566,22 @@ footer{
 .footer-brand .logo{
   font-family:'Noto Serif TC',serif;
   color:var(--gold);font-size:20px;
-  font-weight: 700;
-  letter-spacing:.1em;display:block;margin-bottom:12px;
+  font-weight: 700;letter-spacing:.1em;display:block;margin-bottom:12px;
 }
 .footer-brand p{font-size:14px;}
 .footer-links{font-size:14px}
 .footer-links h4{
   color:rgba(255,255,255,.7);
   font-size:13px;letter-spacing:.2em;
-  margin-bottom:16px;
-  font-weight: 700;
+  margin-bottom:16px;font-weight: 700;
 }
 .footer-links a{
   display:block;color:rgba(255,255,255,.45);
-  text-decoration:none;padding:6px 0;
-  transition:color .3s;
+  text-decoration:none;padding:6px 0;transition:color .3s;
 }
 .footer-links a:hover{color:var(--gold)}
+/* ✅ 安全修正 5：隱藏 Email 連結，改由 JS 動態產生（防爬蟲收集） */
+.footer-contact-email{cursor:pointer;}
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.06);
   margin-top:60px;padding-top:32px;
@@ -641,56 +602,31 @@ footer{
 .reveal-delay-3{transition-delay:.3s}
 .reveal-delay-4{transition-delay:.4s}
 
-/* 🔥 MOBILE RWD 優化 */
+/* ===== MOBILE RWD ===== */
 @media(max-width:768px){
-/* 1. 導覽列與標題基礎縮放 */
   nav { padding: 14px 20px; }
   .story-photo-bg {
-    width: 100%;      /* 手機版照片舖滿全螢幕 */
-    opacity: 0.1;     /* 亮度再調低一點，避免干擾文字 */
-    mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); /* 底部向上淡入 */
+    width: 100%;
+    opacity: 0.1;
+    mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
   }
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
   .moon-icon { margin: 0 auto;}
-  /* 2. 重點：調整 Hero 區塊的排版 */
-  .hero {
-    min-height: 380px; /* 確保有足夠高度容納內容 */
-  }
-
-  /* 移除舊有的 hero-poster 設定，因為我們現在改用背景圖層 */
-  .hero-poster { display: none; } 
-
+  .hero { min-height: 380px; }
+  .hero-poster { display: none; }
   .hero-content {
-    /* 這裡要改用我們討論的「絕對定位」，才能浮在背景圖上並避開頂欄 */
     position: absolute;
-    top: 60%;         /* 往移一點，避開 TZU-TAI Bremen 導覽列 */
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95%;
-    padding-bottom: 0; /* 移除原本的 padding-bottom，改用 top 控制位置 */
+    padding-bottom: 0;
     z-index: 5;
   }
-
-  .hero-title {
-    font-size: 28px;   /* 統一使用 28px，避免標題過大遮擋插畫 */
-    margin-bottom: 15px;
-    line-height: 1.3;
-  }
-
-  .hero-quote {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  /* 3. 按鈕排列調整 */
-  .btn-outline { 
-    margin-left: 5px;  /* 手機版不要強制設為 0，讓兩個按鈕可以並排或微距 */
-    margin-top: 10px; 
-    display: inline-block; 
-  }
-
-  /* 4. 其他區塊維持原樣 */
+  .hero-title { font-size: 28px; margin-bottom: 15px; line-height: 1.3; }
+  .hero-quote { font-size: 14px; margin-bottom: 20px; }
+  .btn-outline { margin-left: 5px; margin-top: 10px; display: inline-block; }
   .nav-links {
     display: none; flex-direction: column; gap: 16px;
     position: fixed; inset: 0; background: rgba(14,31,56,.97);
@@ -705,59 +641,31 @@ footer{
   .footer-inner { flex-direction: column; }
 }
 @media (min-width: 769px) {
-  .story {
-    display: block; 
-    padding: 120px 0;
-    text-align: center; /* 恢復置中 */
-  }
-
-  .story-content {
-    margin: 0 auto;
-    max-width: 800px;
-    padding-left: 0; /* 移除左側偏移 */
-    text-align: center; /* 恢復置中 */
-  }
-
-  .story-subtitle {
-    text-align: center;
-    display: block;
-    letter-spacing: 0.3em;
-    margin-bottom: 20px;
-  }
-
-  .story-text p {
-    border-left: none; /* 移除金線裝飾 */
-    padding-left: 0;
-    text-align: center;
-    line-height: 2;
-    font-size: 18px;
-  }
-
-  /* 調整背景照片：讓它安靜地待在背景 */
+  .story { display: block; padding: 120px 0; text-align: center; }
+  .story-content { margin: 0 auto; max-width: 800px; padding-left: 0; text-align: center; }
+  .story-subtitle { text-align: center; display: block; letter-spacing: 0.3em; margin-bottom: 20px; }
+  .story-text p { border-left: none; padding-left: 0; text-align: center; line-height: 2; font-size: 18px; }
   .story-photo-bg {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.12; /* 調淡透明度，確保不干擾置中文字的閱讀 */
+    position: absolute; right: 0; top: 0; width: 100%; height: 100%;
+    opacity: 0.12;
     background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right center;
+    background-size: contain; background-repeat: no-repeat; background-position: right center;
     mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
     -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
     z-index: 1;
   }
 }
 </style>
+
 </head>
 <body>
 
 <!-- Stars canvas -->
+
 <canvas class="stars-bg" id="starsCanvas"></canvas>
 
 <!-- NAV -->
+
 <nav id="mainNav">
   <a href="#" class="nav-logo">
     TZU-TAI Bremen
@@ -776,10 +684,10 @@ footer{
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
-  <!-- 圖片改為背景層 -->
-  <div class="hero-image-bg"></div> 
-  <img src="https://i.ibb.co/Z1GMGTNn/image.png" style="width:100%; visibility:hidden; display:block;">
+  <div class="hero-image-bg"></div>
+  <img src="https://i.ibb.co/Z1GMGTNn/image.png" style="width:100%; visibility:hidden; display:block;" alt="">
   <div class="hero-vignette"></div>
   <div class="hero-bottom"></div>
   <div class="hero-wen-cover"></div>
@@ -794,6 +702,7 @@ footer{
 </section>
 
 <!-- STORY -->
+
 <section id="story" class="story">
   <div class="story-photo-bg"></div>
   <div class="container">
@@ -809,6 +718,7 @@ footer{
 </section>
 
 <!-- VALUES -->
+
 <section class="values" id="values">
   <div class="values-inner">
     <span class="section-label reveal" style="color:rgba(246,198,91,.6)">Our Team</span>
@@ -823,7 +733,6 @@ footer{
         <div class="value-title">共好｜溫暖職場</div>
         <div class="value-desc">不只是障礙者的圓夢之地，更堅持選用友善環境的原物料。讓每一份產品，都承載著對生命的尊重。</div>
       </div>
-
       <div class="value-card reveal reveal-delay-2">
         <div class="value-img-wrap">
           <img src="https://i.ibb.co/hqSS1fK/image.png" alt="狗" class="value-animal-img">
@@ -832,7 +741,6 @@ footer{
         <div class="value-title">承諾｜嚴謹守護</div>
         <div class="value-desc">導入 HACCP 與 ISO22000 標準。從生產到包裝，我們用最高規格的自我要求，守護您與家人的每一口安心。</div>
       </div>
-
       <div class="value-card reveal reveal-delay-3">
         <div class="value-img-wrap">
           <img src="https://i.ibb.co/qFFL7YBq/image.png" alt="貓" class="value-animal-img">
@@ -841,7 +749,6 @@ footer{
         <div class="value-title">拾光｜傳遞溫度</div>
         <div class="value-desc">將獨特質感融入細節。讓這份禮物不只是傳達心意，更是一場關於美與溫度的生活實踐。</div>
       </div>
-
       <div class="value-card reveal reveal-delay-4">
         <div class="value-img-wrap">
           <img src="https://i.ibb.co/0yRSWpGf/image.png" alt="雞" class="value-animal-img">
@@ -855,6 +762,7 @@ footer{
 </section>
 
 <!-- PRODUCTS -->
+
 <section class="products" id="products">
   <div class="products-inner">
     <div class="products-header">
@@ -931,6 +839,7 @@ footer{
 </section>
 
 <!-- ENTERPRISE -->
+
 <section class="enterprise" id="enterprise">
   <div class="enterprise-inner">
     <div class="enterprise-text">
@@ -943,7 +852,8 @@ footer{
         <li>提升企業 ESG 實質貢獻</li>
         <li>獲得公益合作夥伴認證</li>
       </ul>
-      <a href="mailto:service@tzutai.org.tw" class="btn btn-gold reveal">立即洽詢企業合作</a>
+      <!-- ✅ 安全修正 5：Email 連結改由 JS 動態產生，此處改為佔位元素 -->
+      <a href="#" class="btn btn-gold reveal" id="contactEmailBtn">立即洽詢企業合作</a>
     </div>
     <div class="enterprise-card reveal">
       <h3>我們提供的服務</h3>
@@ -959,6 +869,7 @@ footer{
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -974,7 +885,8 @@ footer{
     </div>
     <div class="footer-links">
       <h4>聯絡方式</h4>
-      <a href="mailto:service@tzutai.org.tw">service@tzutai.org.tw</a>
+      <!-- ✅ 安全修正 5：Email 不寫死在 HTML，由 JS 動態組裝 -->
+      <a href="#" id="footerEmailLink" class="footer-contact-email">載入中…</a>
       <a href="#">新北市庇護工場</a>
     </div>
   </div>
@@ -1040,6 +952,27 @@ const observer=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ✅ 安全修正 5：Email 混淆——由 JS 動態組裝，避免爬蟲直接收集
+(function(){
+  const u = 'service';
+  const d = 'tzutai' + '.org.tw';
+  const email = u + '@' + d;
+  const mailto = 'mailto:' + email;
+
+  // 頁尾 Email 連結
+  const footerLink = document.getElementById('footerEmailLink');
+  if(footerLink){
+    footerLink.textContent = email;
+    footerLink.href = mailto;
+  }
+
+  // 企業合作按鈕
+  const contactBtn = document.getElementById('contactEmailBtn');
+  if(contactBtn){
+    contactBtn.href = mailto;
+  }
+})();
 </script>
 
 </body>
