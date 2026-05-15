@@ -1,78 +1,126 @@
-// === Stars ===
-(function(){
-  const c=document.getElementById('starsCanvas');
-  if(!c)return;
-  const ctx=c.getContext('2d');
-  let stars=[];
-  function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
-  function initStars(){
-    stars=[];
-    for(let i=0;i<120;i++){
-      stars.push({
-        x:Math.random()*c.width,
-        y:Math.random()*c.height,
-        r:Math.random()*1.5+.3,
-        a:Math.random(),
-        speed:Math.random()*.015+.005,
-        phase:Math.random()*Math.PI*2
-      });
-    }
-  }
-  function draw(){
-    ctx.clearRect(0,0,c.width,c.height);
-    const t=Date.now()/1000;
-    stars.forEach(s=>{
-      const opacity=(Math.sin(t*s.speed*6+s.phase)+1)/2*.6+.2;
-      ctx.beginPath();
-      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(246,198,91,${opacity*s.a})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize',()=>{resize();initStars()});
-  resize();initStars();draw();
-})();
+/* =============================================
+TZU-TAI Bremen | main.js
+============================================= */
 
-// === Nav scroll ===
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
+document.addEventListener(‘DOMContentLoaded’, function () {
+
+/* ===== NAV 滾動效果 ===== */
+var nav = document.getElementById(‘mainNav’);
+window.addEventListener(‘scroll’, function () {
+if (window.scrollY > 40) {
+nav.classList.add(‘scrolled’);
+} else {
+nav.classList.remove(‘scrolled’);
+}
 });
 
-// === Hamburger ===
-document.getElementById('hamburger')?.addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.toggle('open');
+/* ===== 漢堡選單 ===== */
+var hamburger = document.getElementById(‘hamburger’);
+var navLinks = document.getElementById(‘navLinks’);
+if (hamburger && navLinks) {
+hamburger.addEventListener(‘click’, function () {
+navLinks.classList.toggle(‘open’);
 });
-
-document.querySelectorAll('#navLinks a').forEach(a=>{
-  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+navLinks.querySelectorAll(‘a’).forEach(function (link) {
+link.addEventListener(‘click’, function () {
+navLinks.classList.remove(‘open’);
 });
+});
+}
 
-// === Scroll reveal ===
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('visible')
-  });
-},{threshold:.12});
+/* ===== SCROLL REVEAL ===== */
+var revealEls = document.querySelectorAll(’.reveal’);
+var revealObserver = new IntersectionObserver(function (entries) {
+entries.forEach(function (entry) {
+if (entry.isIntersecting) {
+entry.target.classList.add(‘visible’);
+revealObserver.unobserve(entry.target);
+}
+});
+}, { threshold: 0.15 });
+revealEls.forEach(function (el) { revealObserver.observe(el); });
 
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* ===== EMAIL 防爬蟲動態產生 ===== */
+var emailUser = ‘service’;
+var emailDomain = ‘tzutai.org.tw’;
+var emailAddress = emailUser + ‘@’ + emailDomain;
 
-// === Email protection ===
-(function(){
-  const u = 'service';
-  const d = 'tzutai.org.tw';
-  const email = u + '@' + d;
-  const mailto = 'mailto:' + email;
+var footerEmailLink = document.getElementById(‘footerEmailLink’);
+if (footerEmailLink) {
+footerEmailLink.textContent = emailAddress;
+footerEmailLink.href = ‘mailto:’ + emailAddress;
+}
 
-  const footerLink = document.getElementById('footerEmailLink');
-  if(footerLink){
-    footerLink.textContent = email;
-    footerLink.href = mailto;
-  }
+var contactEmailBtn = document.getElementById(‘contactEmailBtn’);
+if (contactEmailBtn) {
+contactEmailBtn.href = ‘mailto:’ + emailAddress;
+}
 
-  const contactBtn = document.getElementById('contactEmailBtn');
-  if(contactBtn){
-    contactBtn.href = mailto;
-  }
-})();
+/* =============================================
+META PIXEL 事件追蹤
+============================================= */
+
+// 安全包裝：避免 fbq 未載入時報錯
+function trackEvent(eventName, params) {
+if (typeof fbq === ‘function’) {
+if (params) {
+fbq(‘track’, eventName, params);
+} else {
+fbq(‘track’, eventName);
+}
+}
+}
+
+// 「立即洽詢企業合作」按鈕
+if (contactEmailBtn) {
+contactEmailBtn.addEventListener(‘click’, function () {
+trackEvent(‘Contact’, { content_name: ‘企業合作按鈕’ });
+});
+}
+
+// Footer Email 連結
+if (footerEmailLink) {
+footerEmailLink.addEventListener(‘click’, function () {
+trackEvent(‘Contact’, { content_name: ‘Footer Email’ });
+});
+}
+
+// 導覽列「洽詢採購」按鈕
+var navCta = document.querySelector(’.nav-cta’);
+if (navCta) {
+navCta.addEventListener(‘click’, function () {
+trackEvent(‘Contact’, { content_name: ‘導覽列洽詢’ });
+});
+}
+
+// Hero「探索我們的商品」按鈕
+var heroProduct = document.querySelector(‘a[href=”#products”].btn-gold’);
+if (heroProduct) {
+heroProduct.addEventListener(‘click’, function () {
+trackEvent(‘ViewContent’, { content_name: ‘產品頁’ });
+});
+}
+
+// Hero「了解更多」按鈕
+var heroStory = document.querySelector(‘a[href=”#story”].btn-outline’);
+if (heroStory) {
+heroStory.addEventListener(‘click’, function () {
+trackEvent(‘ViewContent’, { content_name: ‘我們的故事’ });
+});
+}
+
+// 滾動到企業合作區塊（只觸發一次）
+var enterpriseSection = document.getElementById(‘enterprise’);
+if (enterpriseSection) {
+var enterpriseObserver = new IntersectionObserver(function (entries) {
+entries.forEach(function (entry) {
+if (entry.isIntersecting) {
+trackEvent(‘ViewContent’, { content_name: ‘企業合作區塊’ });
+enterpriseObserver.unobserve(entry.target);
+}
+});
+}, { threshold: 0.3 });
+enterpriseObserver.observe(enterpriseSection);
+}
+
+});
