@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
@@ -23,7 +24,7 @@ src="https://www.facebook.com/tr?id=869826110676447&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-<link rel="preload" as="image" href="images/視覺.webp">
+<link rel="preload" as="image" href="https://i.ibb.co/Z1GMGTNn/image.png">
 <meta name="description" content="新北市慈泰庇護工場 — 每一塊餅乾都是一群人一起完成的作品。支持身心障礙者就業，創造有溫度的禮盒。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -120,14 +121,30 @@ nav.scrolled{background:rgba(14,31,56,.96)}
   justify-content: center;
 }
 
+.hero-poster{
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+  object-position: bottom;
+  background-color: #0e1f38;
+  display: none;
+  position: relative;
+  z-index: 0;
+  animation: heroZoom 22s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{
+  from{transform:scale(1.0)}
+  to{transform:scale(1.04)}
+}
+
 .hero-image-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* ✅ 修正：改為相對路徑 */
-  background-image: url('images/視覺.webp');
+  background-image: url('https://i.ibb.co/Z1GMGTNn/image.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -146,7 +163,18 @@ nav.scrolled{background:rgba(14,31,56,.96)}
     radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(14,31,56,.18) 100%),
     linear-gradient(90deg, rgba(14,31,56,.15) 0%, transparent 15%, transparent 85%, rgba(14,31,56,.15) 100%);
   pointer-events:none;
-  z-index:2;
+  z-index:1;
+}
+
+.hero-wen-cover{
+  position:absolute;
+  bottom:0;right:0;
+  width:140px;height:140px;
+  background:var(--warm);
+  z-index:5;
+  pointer-events:none;
+  border-top-left-radius:120px;
+  display: none;
 }
 
 .hero-bottom{
@@ -154,15 +182,6 @@ nav.scrolled{background:rgba(14,31,56,.96)}
   background:var(--warm);
   pointer-events:none;
   z-index:4;
-}
-
-/* ✅ 修正：用空白圖撐開 hero 高度，不用隱藏的 img */
-.hero-spacer {
-  width: 100%;
-  aspect-ratio: 16/7;
-  max-height: 550px;
-  display: block;
-  visibility: hidden;
 }
 
 .hero-content{
@@ -203,8 +222,7 @@ nav.scrolled{background:rgba(14,31,56,.96)}
 .hero-title em{color: #FFD700 !important;font-style: normal;}
 .hero-quote{
   color: #f0f0f0;
-  text-shadow: 0 1px 8px rgba(0,0,0,.7);
-  margin-bottom: 28px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .btn{
@@ -258,12 +276,18 @@ nav.scrolled{background:rgba(14,31,56,.96)}
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   margin-left: 10px;
 }
+.btn-outline::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(31,58,95,0) 0%,rgba(31,58,95,.06) 100%);
+  opacity:0;transition:opacity .3s;
+}
 .btn-outline:hover{
   background: #FFFFFF;
   color: #0e1f38;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
+.btn-outline:hover::before{opacity:1}
 
 /* ===== SECTION COMMONS ===== */
 section{position:relative;z-index:1}
@@ -299,8 +323,7 @@ section{position:relative;z-index:1}
   right: 0;
   width: 50%;
   height: 100%;
-  /* ✅ 修正：改為相對路徑，請確認有上傳此圖；如無則可移除這行 */
-  background-image: url('images/故事背景.webp');
+  background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
   background-size: contain;
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -331,6 +354,17 @@ section{position:relative;z-index:1}
 }
 .story-inner{max-width:680px;margin:0 auto}
 .story .section-title{color:var(--navy2)}
+.story-icon {margin-bottom: 15px;}
+.moon-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: 50% 20%;
+  border-radius: 50%;
+  background: #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+  display: block;
+}
 .story p.section-sub {
   font-size: 18px !important;
   line-height: 2 !important;
@@ -399,6 +433,7 @@ section{position:relative;z-index:1}
   object-position:center top;
   display:block;
   transition:transform .5s cubic-bezier(.23,1,.32,1);
+  mix-blend-mode:normal;
 }
 .value-card:hover .value-animal-img{transform:scale(1.06);}
 .value-foil-shine{
@@ -541,6 +576,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   text-decoration:none;padding:6px 0;transition:color .3s;
 }
 .footer-links a:hover{color:var(--gold)}
+/* ✅ 安全修正 5：隱藏 Email 連結，改由 JS 動態產生（防爬蟲收集） */
 .footer-contact-email{cursor:pointer;}
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.06);
@@ -572,7 +608,9 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   }
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
+  .moon-icon { margin: 0 auto;}
   .hero { min-height: 380px; }
+  .hero-poster { display: none; }
   .hero-content {
     position: absolute;
     top: 60%;
@@ -606,8 +644,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   .story-photo-bg {
     position: absolute; right: 0; top: 0; width: 100%; height: 100%;
     opacity: 0.12;
-    /* ✅ 修正：改為相對路徑 */
-    background-image: url('images/故事背景.webp');
+    background-image: url('https://i.ibb.co/zTjV4J1s/1.png');
     background-size: contain; background-repeat: no-repeat; background-position: right center;
     mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
     -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
@@ -619,9 +656,12 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </head>
 <body>
 
+<!-- Stars canvas -->
+
 <canvas class="stars-bg" id="starsCanvas"></canvas>
 
 <!-- NAV -->
+
 <nav id="mainNav">
   <a href="#" class="nav-logo">
     TZU-TAI Bremen
@@ -640,12 +680,13 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
   <div class="hero-image-bg"></div>
-  <!-- ✅ 修正：用 div 撐高度，移除舊的隱藏 img -->
-  <div class="hero-spacer"></div>
+  <img src="https://i.ibb.co/Z1GMGTNn/image.png" style="width:100%; visibility:hidden; display:block;" alt="">
   <div class="hero-vignette"></div>
   <div class="hero-bottom"></div>
+  <div class="hero-wen-cover"></div>
   <div class="hero-content">
     <h1 class="hero-title">
       每一塊餅乾<br>都是一群人<em>一起</em>完成的作品
@@ -657,6 +698,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </section>
 
 <!-- STORY -->
+
 <section id="story" class="story">
   <div class="story-photo-bg"></div>
   <div class="container">
@@ -672,6 +714,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </section>
 
 <!-- VALUES -->
+
 <section class="values" id="values">
   <div class="values-inner">
     <span class="section-label reveal" style="color:rgba(246,198,91,.6)">Our Team</span>
@@ -680,7 +723,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
     <div class="value-grid">
       <div class="value-card reveal reveal-delay-1">
         <div class="value-img-wrap">
-          <img src="images/驢.webp" alt="驢" class="value-animal-img">
+          <img src="https://i.ibb.co/p67BHwzX/image.png" alt="驢" class="value-animal-img">
           <div class="value-foil-shine"></div>
         </div>
         <div class="value-title">共好｜溫暖職場</div>
@@ -688,7 +731,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
       </div>
       <div class="value-card reveal reveal-delay-2">
         <div class="value-img-wrap">
-          <img src="images/狗.webp" alt="狗" class="value-animal-img">
+          <img src="https://i.ibb.co/hqSS1fK/image.png" alt="狗" class="value-animal-img">
           <div class="value-foil-shine"></div>
         </div>
         <div class="value-title">承諾｜嚴謹守護</div>
@@ -696,7 +739,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
       </div>
       <div class="value-card reveal reveal-delay-3">
         <div class="value-img-wrap">
-          <img src="images/貓.webp" alt="貓" class="value-animal-img">
+          <img src="https://i.ibb.co/qFFL7YBq/image.png" alt="貓" class="value-animal-img">
           <div class="value-foil-shine"></div>
         </div>
         <div class="value-title">拾光｜傳遞溫度</div>
@@ -704,7 +747,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
       </div>
       <div class="value-card reveal reveal-delay-4">
         <div class="value-img-wrap">
-          <img src="images/雞.webp" alt="雞" class="value-animal-img">
+          <img src="https://i.ibb.co/0yRSWpGf/image.png" alt="雞" class="value-animal-img">
           <div class="value-foil-shine"></div>
         </div>
         <div class="value-title">純粹｜還原真味</div>
@@ -715,6 +758,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </section>
 
 <!-- PRODUCTS -->
+
 <section class="products" id="products">
   <div class="products-inner">
     <div class="products-header">
@@ -741,6 +785,12 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
             <circle cx="100" cy="72" r="8" fill="#e8a92a"/>
             <path d="M96 72 Q84 82 78 92" stroke="#F6C65B" stroke-width="5" fill="none" stroke-linecap="round"/>
             <path d="M104 72 Q116 82 122 92" stroke="#F6C65B" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="70" cy="120" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="130" cy="120" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="70" cy="145" r="3" fill="rgba(246,198,91,.25)"/>
+            <circle cx="130" cy="145" r="3" fill="rgba(246,198,91,.25)"/>
+            <path d="M60 80 L61.5 85 L66 83.5 L62 87 L63.5 92 L60 88.5 L56.5 92 L58 87 L54 83.5 L58.5 85Z" fill="rgba(246,198,91,.5)"/>
+            <path d="M145 95 L146 98 L149 97 L147 99.5 L148 102.5 L145 100.5 L142 102.5 L143 99.5 L141 97 L144 98Z" fill="rgba(246,198,91,.4)"/>
           </svg>
         </div>
         <div class="product-badge">熱銷</div>
@@ -764,6 +814,15 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
             <circle cx="115" cy="68" r="30" fill="#1F3A5F"/>
             <circle cx="50" cy="45" r="2.5" fill="#F6C65B"/>
             <circle cx="158" cy="55" r="2" fill="#F6C65B"/>
+            <circle cx="40" cy="110" r="1.8" fill="#F6C65B" opacity=".7"/>
+            <circle cx="165" cy="100" r="2.5" fill="#F6C65B" opacity=".8"/>
+            <circle cx="75" cy="140" r="1.5" fill="#F6C65B" opacity=".6"/>
+            <circle cx="135" cy="145" r="2" fill="#F6C65B" opacity=".7"/>
+            <path d="M50 45 L51.2 49 L55 50 L51.2 51 L50 55 L48.8 51 L45 50 L48.8 49Z" fill="#F6C65B" opacity=".9"/>
+            <path d="M158 55 L159 58 L162 59 L159 60 L158 63 L157 60 L154 59 L157 58Z" fill="#F6C65B"/>
+            <rect x="80" y="120" width="40" height="44" rx="20" fill="rgba(246,198,91,.15)" stroke="rgba(246,198,91,.3)" stroke-width="1"/>
+            <rect x="96" y="115" width="8" height="8" rx="2" fill="rgba(246,198,91,.4)"/>
+            <line x1="100" y1="164" x2="100" y2="174" stroke="rgba(246,198,91,.4)" stroke-width="2"/>
           </svg>
         </div>
         <div class="product-body">
@@ -776,6 +835,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </section>
 
 <!-- ENTERPRISE -->
+
 <section class="enterprise" id="enterprise">
   <div class="enterprise-inner">
     <div class="enterprise-text">
@@ -788,6 +848,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
         <li>提升企業 ESG 實質貢獻</li>
         <li>獲得公益合作夥伴認證</li>
       </ul>
+      <!-- ✅ 安全修正 5：Email 連結改由 JS 動態產生，此處改為佔位元素 -->
       <a href="#" class="btn btn-gold reveal" id="contactEmailBtn">立即洽詢企業合作</a>
     </div>
     <div class="enterprise-card reveal">
@@ -804,6 +865,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -819,6 +881,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
     </div>
     <div class="footer-links">
       <h4>聯絡方式</h4>
+      <!-- ✅ 安全修正 5：Email 不寫死在 HTML，由 JS 動態組裝 -->
       <a href="#" id="footerEmailLink" class="footer-contact-email">載入中…</a>
       <a href="#">新北市庇護工場</a>
     </div>
