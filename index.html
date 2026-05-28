@@ -588,13 +588,38 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 .reveal-delay-4{transition-delay:.4s}
 
 /* ===== MOBILE RWD ===== */
+/* ===== 手機版與行動裝置 (螢幕寬度 768px 以下) ===== */
 @media(max-width:768px){
   nav { padding: 14px 20px; }
+  
+  /* ✅ 正確修正：手機版故事背景圖，強制融入背景 */
   .story-photo-bg {
-    width: 100%;
-    opacity: 0.1;
-    mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    background-image: url('images/故事背景.webp') !important;
+    background-size: cover !important;        /* 滿版：把左右硬切邊緣推到螢幕外 */
+    background-position: right center !important;
+    opacity: 0.06 !important;                  /* 極淡：變成隱約浮水印，不搶字體顏色 */
+    
+    /* 使用圓形羽化遮罩，消滅所有邊界死角 */
+    mask-image: radial-gradient(circle at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%) !important;
+    -webkit-mask-image: radial-gradient(circle at 75% 50%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%) !important;
+    z-index: 1 !important;
   }
+
+  /* 確保內容疊在背景圖上方，並用文字微發光保護手機版閱讀體驗 */
+  .story-content { 
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100%;
+  }
+  .story-text p { 
+    text-shadow: 0 0 12px #fdfaf5, 0 0 6px #fdfaf5 !important;
+  }
+
   .section-title { font-size: 28px; }
   .story, .values, .products, .enterprise { padding: 80px 20px; }
   .moon-icon { margin: 0 auto;}
@@ -625,35 +650,23 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   .enterprise-card { padding: 32px 24px; }
   .footer-inner { flex-direction: column; }
 }
+
+/* ===== 電腦版與網頁版 (螢幕寬度 769px 以上) ===== */
 @media (min-width: 769px) {
   .story { display: block; padding: 120px 0; text-align: center; }
   .story-content { margin: 0 auto; max-width: 800px; padding-left: 0; text-align: center; }
   .story-subtitle { text-align: center; display: block; letter-spacing: 0.3em; margin-bottom: 20px; }
   .story-text p { border-left: none; padding-left: 0; text-align: center; line-height: 2; font-size: 18px; }
+  
+  /* 恢復網頁版原本的漂亮半滿版設計 */
   .story-photo-bg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* 1. 改用 cover 讓全螢幕滿版，並靠右置中，防止圖片被縮小硬切 */
-    background-size: cover; 
-    background-position: right center;
-    /* 2. 降低透明度至 0.06 ~ 0.08，讓它變成隱隱約約的水印，確保文字清晰 */
-    opacity: 0.07; 
-    /* 3. 使用四向微調或全方位的圓形遮罩，讓四周都自然融入背景 */
-    mask-image: radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 85%);
-    -webkit-mask-image: radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 85%);
+    position: absolute; right: 0; top: 0; width: 60%; height: 100%;
+    opacity: 0.75;
+    background-image: url('images/故事背景.webp');
+    background-size: contain; background-repeat: no-repeat; background-position: right center;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 95%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 95%);
     z-index: 1;
-  }
-
-  /* 確保故事內容疊在最上層，並稍微增加文字陰影提升手機版可讀性 */
-  .story-content {
-    position: relative;
-    z-index: 2;
-  }
-  .story-text p {
-    text-shadow: 0 0 10px #fdfaf5, 0 0 5px #fdfaf5; /* 利用跟背景一樣的膚色做微發光，保護字體 */
   }
 }
 </style>
