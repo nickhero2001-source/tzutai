@@ -563,84 +563,191 @@ section{position:relative;z-index:1}
 .enterprise .btn-gold{margin-top:36px;display:inline-block}
 
 /* ===== FOOTER ===== */
-footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
-.footer-inner{
-  max-width:1000px;margin:0 auto;
-  display:flex;flex-wrap:wrap;
-  justify-content:space-between;gap:40px;align-items:flex-start;
-}
-.footer-brand .logo{
-  font-family:'Noto Serif TC',serif;
-  color:var(--gold);font-size:20px;
-  font-weight: 700;letter-spacing:.1em;display:block;margin-bottom:12px;
-}
-.footer-brand p{font-size:14px;}
-  .footer-logo-img {
-  display: block;
-  max-width: 160px;       /* 🔍 微調寬度比例，讓整體視覺更平衡 */
-  height: auto;
-  margin-bottom: 16px;    /* 📐 改為下邊距，與 TZU-TAI Bremen 保持優雅間距 */
-  opacity: 0.95;          /* 🎨 保持高清晰度並融入夜空背景 */
-  transition: opacity 0.3s ease;
+footer {
+  background-color: #0e1f38;
+  padding: 75px 0 65px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06); /* 頂部極細天際線 */
 }
 
-.footer-logo-img:hover {
-  opacity: 1;
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between; /* 📊 讓三欄優雅地拉開，形成對稱留白 */
+  align-items: flex-end;         /* ⚖️ 關鍵：讓所有元素在底部水平線完美齊平，極度洗鍊 */
 }
-.footer-links{font-size:14px}
-.footer-links h4{
-  color:rgba(255,255,255,.7);
-  font-size:13px;letter-spacing:.2em;
-  margin-bottom:16px;font-weight: 700;
+
+/* 🏢 1. 左側品牌群組 */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
 }
-.footer-links a{
-  display:block;color:rgba(255,255,255,.45);
-  text-decoration:none;padding:6px 0;transition:color .3s;
+
+.footer-logo-img {
+  display: block;
+  max-width: 135px; /* 縮小比例更顯精緻 */
+  height: auto;
+  margin-bottom: 4px;
+  opacity: 0.95;
 }
-.footer-links a:hover{color:var(--gold)}
-/* ✅ 安全修正 5：隱藏 Email 連結，改由 JS 動態產生（防爬蟲收集） */
-.footer-contact-email{cursor:pointer;}
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.06);
-  margin-top:60px;padding-top:32px;
-  text-align:center;font-size:13px;
-  color:rgba(255,255,255,.3);
+
+.footer-brand .logo {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.footer-quote{
-  font-family:'Noto Serif TC',serif;
-  font-style:italic;color:rgba(255,255,255,.4);
-  margin-top:12px;font-size:13px;
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.65); /* 莫蘭迪低飽和白，高質感不刺眼 */
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.06em;
+  margin: 0;
 }
-/* 🌟 右側心路 LOGO 專屬樣式 */
+
+/* ✉️ 2. 中間聯絡方式群組 */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+  padding-left: 60px; /* 稍微往右推，與左側品牌拉開舒適呼吸空間 */
+  margin-bottom: 2px; /* 微調基線對齊 */
+}
+
+.footer-links h4 {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 4px 0;
+}
+
+/* ✉️ 中間聯絡方式群組中的連結 */
+.footer-links a {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+  
+  /* 🎯 融入精華：確保 JS 還在載入時，滑鼠移上去依然會出現「點擊小手」 */
+  cursor: pointer; 
+}
+/* 滑鼠懸停時顯現優雅的微亮 */
+.footer-links a:hover {
+  color: #f6c65b; /* 融入網頁點綴金黃色，增加互動感 */
+}
+
+/* 🤝 3. 右側母機構群組 */
 .footer-right-brand {
   display: flex;
-  align-items: flex-end;   /* 📐 關鍵：讓 LOGO 在該欄位中完美「貼齊右下角」 */
   justify-content: flex-end;
-  min-width: 160px;        /* 確保基本寬度，防止被其他欄位擠壓 */
+  flex: 1;
 }
 
 .footer-syinlu-img {
-  max-width: 140px;         /* 🔍 電腦版合適的細緻寬度，可依視覺感受增減 */
+  display: block;
+  max-width: 125px; /* 與左側標章達成視覺天平 */
   height: auto;
-  opacity: 0.85;            /* 🎨 微微降低飽和度，高質感地融入夜空底色 */
-  transition: opacity 0.3s ease;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .footer-syinlu-img:hover {
-  opacity: 1;              /* 滑鼠移過去時亮起 */
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
-/* 📱 貼心照顧手機裝置排版 */
+/* 🎯 4. 底部版權與英文金句 */
+.footer-bottom {
+  max-width: 1140px;
+  margin: 50px auto 0 auto;
+  padding: 35px 40px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* 細緻分隔線 */
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.footer-quote {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.35); /* 隱約溫暖的哲學感留白 */
+  font-style: italic;
+  font-family: 'Noto Serif TC', Georgia, serif; /* 優雅襯線體 */
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+}
+/* ==========================================
+   📱 手機裝置 RWD 完美視覺再造（完整區塊）
+   ========================================== */
 @media (max-width: 768px) {
-  .footer-right-brand {
-    justify-content: center; /* 手機版時，自動轉為底部的水平置中 */
-    align-items: center;
-    margin-top: 35px;        /* 與上方的快速連結保持舒適的呼吸留白 */
-    width: 100%;
+  
+  /* 🎯 1. footer 標籤本身：縮減上下留白，符合手機體感 */
+  footer {
+    padding: 55px 0 45px 0 !important;
   }
   
+  /* 📐 2. 頁尾內部容器：改為「垂直置中單欄」排列 */
+  .footer-inner {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 40px !important;            /* 各區塊之間的上下間距 */
+    padding: 0 24px !important;
+  }
+
+  /* 🏢 3. 清除電腦版各欄位的左右推擠與留白 */
+  .footer-brand, 
+  .footer-links, 
+  .footer-right-brand {
+    flex: none !important;
+    width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-left: 0 !important;     /* 清除電腦版的向右推擠 */
+  }
+
+  /* 🔍 4. 微調新北庇護工場標章尺寸 */
+  .footer-logo-img {
+    max-width: 130px !important;
+  }
+
+  /* ✉️ 5. 中間「聯絡方式」：上下加上若隱若現的細線，增加手機版層次感 */
+  .footer-links {
+    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 25px 0 !important;
+    gap: 10px !important;
+  }
+
+  /* 🤝 6. 微調心路基金會標章尺寸 */
   .footer-syinlu-img {
-    max-width: 115px;        /* 手機螢幕較窄，將 LOGO 稍微縮小更精緻 */
+    max-width: 115px !important;
+  }
+
+  /* 🎯 7. 底部版權宣告區塊微調 */
+  .footer-bottom {
+    margin-top: 40px !important;
+    padding: 25px 24px 0 24px !important;
+    font-size: 11px !important;      /* 手機版字體稍微縮小 */
+    line-height: 1.7 !important;
+  }
+  
+  /* 📜 8. 底部英文金句微調 */
+  .footer-quote {
+    font-size: 12px !important;
+    margin-top: 8px !important;
+    padding: 0 10px !important;     /* 防止金句太貼手機左右邊緣 */
   }
 }
 /* ===== SCROLL REVEAL ===== */
@@ -986,7 +1093,7 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 <!-- FOOTER -->
 
 <footer>
- <div class="footer-inner">
+  <div class="footer-inner">
     
     <div class="footer-brand">
       <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
@@ -995,25 +1102,16 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
     </div>
 
     <div class="footer-links">
-      <h4>快速連結</h4>
-      <a href="#story">我們的故事</a>
-      <a href="#values">夥伴特質</a>
-      <a href="#products">產品系列</a>
-      <a href="#enterprise">企業合作</a>
+      <h4>聯絡方式</h4>
+      <a href="#" id="footerEmailLink" class="footer-contact-email">載入中…</a>
+      <a href="#" class="footer-contact-text">新北市慈泰庇護工場</a>
     </div>
 
     <div class="footer-right-brand">
       <img src="images/心路LOGO.webp" alt="心路社會福利基金會" class="footer-syinlu-img">
     </div>
 
-    <div class="footer-links">
-      <h4>聯絡方式</h4>
-      <!-- ✅ 安全修正 5：Email 不寫死在 HTML，由 JS 動態組裝 -->
-      <a href="#" id="footerEmailLink" class="footer-contact-email">載入中…</a>
-      <a href="#">新北市慈泰庇護工場</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
+  </div> <div class="footer-bottom">
     © 2026 新北市慈泰庇護工場 · TZU-TAI Bremen · 版權所有
     <div class="footer-quote">"Success is not the key to happiness — Happiness is the key to success"</div>
   </div>
