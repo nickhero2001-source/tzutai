@@ -23,16 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. 行動裝置選單
+   // 3. 行動裝置選單 (升級優化版：打開選單時鎖定底層滾動)
     const hamburger = document.getElementById('hamburger');
     const navLinksContainer = document.getElementById('navLinks');
     if (hamburger && navLinksContainer) {
         hamburger.addEventListener('click', (e) => {
             e.stopPropagation();
-            navLinksContainer.classList.toggle('open');
+            const isOpen = navLinksContainer.classList.toggle('open');
+            // 如果選單是打開的，就鎖定 body 滾動；關閉則恢復
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
         document.querySelectorAll('#navLinks a').forEach(link => {
-            link.addEventListener('click', () => navLinksContainer.classList.remove('open'));
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('open');
+                document.body.style.overflow = ''; // 點擊連結跳轉後，恢復滾動
+            });
         });
     }
 
@@ -47,6 +52,71 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
+    // ===== 5. 星空背景 Canvas 動態效果 =====
+    const canvas = document.getElementById('starsCanvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        const starCount = 80; // 星星總數，可自行調整密集度
+
+        // 設定 Canvas 畫布大小符合視窗
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars(); // 視窗大小改變時重新初始化星星，避免失真
+        }
+
+        // 初始化星星資料
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < starCount; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5 + 0.5,           // 星星大小 (0.5px ~ 2px)
+                    alpha: Math.random(),                      // 初始透明度
+                    speed: Math.random() * 0.02 + 0.005,       // 閃爍速度
+                    direction: Math.random() > 0.5 ? 1 : -1    // 變亮或變暗
+                });
+            }
+        }
+
+        // 繪製與更新閃爍動畫
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                // 調整透明度達到閃爍效果
+                star.alpha += star.speed * star.direction;
+                if (star.alpha >= 1) {
+                    star.alpha = 1;
+                    star.direction = -1;
+                } else if (star.alpha <= 0.1) {
+                    star.alpha = 0.1;
+                    star.direction = 1;
+                }
+
+                // 開始畫星星（微小發光的圓點）
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(246, 198, 91, ${star.alpha})`; // 使用你在 CSS 裡定義的 --gold 金黃色
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate); // 確保動畫流暢優雅
+        }
+
+        // 監聽視窗縮放
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resizeCanvas, 200); // 加上防抖動，避免手機縮放時卡頓
+        });
+
+        // 啟動星空
+        resizeCanvas();
+        animate();
+    }
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 });
