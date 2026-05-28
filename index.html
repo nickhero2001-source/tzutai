@@ -709,6 +709,13 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   }
   .nav-links.open { display: flex; }
   .nav-cta { display: none; }
+  /* 🎯 1. 讓手機版 Logo 區塊內部（英文與中文）上下居中對齊 */
+  .nav-logo {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;   /* 讓英文與中文水平完美置中 */
+    text-align: center !important;
+  }
   .nav-logo span {
     white-space: nowrap !important;   /* 🚀 核心：強制在同一行呈現 */
     font-size: 13px !important;       /* 📐 微調至 13px，確保在所有手機螢幕都能完整塞下一行 */
