@@ -556,15 +556,15 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 .footer-brand p{font-size:14px;}
   .footer-logo-img {
   display: block;
-  max-width: 180px;    /* 🔍 控制 LOGO 寬度，維持與截圖一樣的精緻比例 */
+  max-width: 160px;       /* 🔍 微調寬度比例，讓整體視覺更平衡 */
   height: auto;
-  margin-top: 20px;    /* 📐 與上方「創造價值」文字保持優雅的留白間距 */
-  opacity: 0.9;        /* 🎨 微微降低一點點飽和，完美融入夜空色背景 */
+  margin-bottom: 16px;    /* 📐 改為下邊距，與 TZU-TAI Bremen 保持優雅間距 */
+  opacity: 0.95;          /* 🎨 保持高清晰度並融入夜空背景 */
   transition: opacity 0.3s ease;
 }
 
 .footer-logo-img:hover {
-  opacity: 1;          /* 滑鼠懸停時完全亮起 */
+  opacity: 1;
 }
 .footer-links{font-size:14px}
 .footer-links h4{
@@ -929,9 +929,10 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
+       <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
+      
       <span class="logo">TZU-TAI Bremen</span>
       <p>新北市慈泰庇護工場<br>讓每一個人都有能力創造價值</p>
-      <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
     </div>
     <div class="footer-links">
       <h4>快速連結</h4>
