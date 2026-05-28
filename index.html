@@ -596,8 +596,8 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
      🌟 手機版 OUR STORY 區塊精緻化調整（雜誌排版風格）
      ======================================================== */
   /* 1. 調整區塊高度，將下方特別留出 280px 的專屬空間給照片 */
-  .story {
-    padding: 60px 20px 280px 20px !important;
+ .story {
+    padding: 60px 20px 360px 20px !important;
   }
   
   /* 2. 文字比例整體縮小，排版更細緻優雅 */
@@ -625,24 +625,25 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 
   /* 3. 照片為主：恢復網頁版清晰度，並放置於右下角專屬空間 */
   .story-photo-bg {
-    width: 90% !important;
-    height: 280px !important;
+    width: 100% !important; 
+    height: 360px !important;
     position: absolute !important;
     top: auto !important;
     bottom: 0 !important;
     right: 0 !important;
-    left: auto !important;
+    left: 0 !important;
     
+    /* 保持比例縮放，靠右下角對齊，避免變形與硬切 */
     background-size: contain !important;
     background-position: right bottom !important;
     background-repeat: no-repeat !important;
     
-    /* 恢復與網頁版相同的清晰度 */
+    /* 清晰度維持與網頁版相同 */
     opacity: 0.85 !important; 
     
-    /* 像網頁版一樣，由右向左自然淡出，完美融入背景 */
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%) !important;
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%) !important;
+    /* 漸層遮罩：將淡出點往左推，讓照片的可視範圍更廣 */
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%) !important;
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%) !important;
     
     z-index: 1 !important;
     pointer-events: none;
