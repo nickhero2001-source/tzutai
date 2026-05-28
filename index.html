@@ -586,9 +586,9 @@ footer::before {
   margin: 0 auto;
   padding: 0 48px;
   display: grid;
-  grid-template-columns: 1.8fr 1px 1fr;
+  grid-template-columns: 1.6fr 1px 1fr;
   gap: 0;
-  align-items: start;
+  align-items: center;
 }
 
 /* 垂直分割線 */
@@ -603,7 +603,7 @@ footer::before {
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
   padding-right: 32px;
 }
 
@@ -615,55 +615,66 @@ footer::before {
 
 .footer-logo-divider {
   width: 1px;
-  height: 52px;
+  height: 56px;
   background: linear-gradient(180deg, transparent, rgba(255,255,255,.25) 30%, rgba(255,255,255,.25) 70%, transparent);
+}
+
+.footer-syinlu-img {
+  display: block;
+  height: 56px;
+  width: auto;
+  opacity: .85;
+  transition: opacity .3s, transform .3s;
 }
 
 .footer-logo-img {
   display: block;
-  height: 52px;
+  height: 56px;
   width: auto;
   opacity: 0.95;
 }
 
-.footer-brand .logo {
-  color: var(--gold);
+.footer-tagline {
   font-family: 'Noto Serif TC', serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .35em;
-  text-transform: uppercase;
-  opacity: .75;
+  color: rgba(255,255,255,.85);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.6;
 }
 
-.footer-brand p {
-  color: rgba(255,255,255,.4);
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: .08em;
-  margin-top: -8px;
+.footer-brand-name {
+  font-family: 'Noto Serif TC', serif;
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  opacity: .9;
 }
 
 /* 中間聯絡方式 */
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   padding-left: 48px;
 }
 
 .footer-links h4 {
   color: rgba(246,198,91,.6);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .45em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.footer-links a {
-  color: rgba(255,255,255,.45);
-  font-size: 13px;
+.footer-links a,
+.footer-links span,
+.footer-links p {
+  color: rgba(255,255,255,.55);
+  font-size: 15px;
   text-decoration: none;
   letter-spacing: .06em;
   line-height: 1.6;
@@ -1137,21 +1148,16 @@ footer::before {
         <div class="footer-logo-divider"></div>
         <img src="images/心路LOGO.webp" alt="心路社會福利基金會" class="footer-syinlu-img">
       </div>
-      <span class="logo">TZU-TAI Bremen</span>
-      <p>新北市慈泰庇護工場<br>讓每一個人都有能力創造價值</p>
+      <p class="footer-tagline">讓每一個人都有能力創造價值</p>
     </div>
 
     <div class="footer-divider"></div>
 
     <div class="footer-links">
       <h4>聯絡方式</h4>
+      <span class="footer-brand-name">TZU-TAI Bremen</span>
       <a href="#" id="footerEmailLink" class="footer-contact-email">載入中…</a>
-      <a href="#" class="footer-contact-text">新北市慈泰庇護工場</a>
-    </div>
-
-    <div class="footer-divider"></div>
-
-    <div class="footer-right-brand">
+      <p>TEL：02-2290-0959</p>
     </div>
 
   </div>
