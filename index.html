@@ -563,33 +563,37 @@ section{position:relative;z-index:1}
 .enterprise .btn-gold{margin-top:36px;display:inline-block}
 
 /* ===== FOOTER ===== */
+/* ==========================================================================
+   ===== FOOTER 頂級美學重塑版 (徹底解決網頁版散落、空洞問題) =====
+   ========================================================================== */
 footer {
   background-color: #0e1f38;
-  padding: 75px 0 65px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06); /* 頂部極細天際線 */
+  padding: 85px 0 65px 0;          /* 📐 稍微拉高上下留白，彰顯大氣質感 */
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer-inner {
-  max-width: 1140px;
+  max-width: 1050px;             /* 🎯 亮點 1：縮緊最大寬度，讓資訊往中間黃金比例靠攏 */
   margin: 0 auto;
   padding: 0 40px;
-  display: flex;
-  justify-content: space-between; /* 📊 讓三欄優雅地拉開，形成對稱留白 */
-  align-items: flex-end;         /* ⚖️ 關鍵：讓所有元素在底部水平線完美齊平，極度洗鍊 */
+  display: grid;                 /* 📊 亮點 2：改用精準的 Grid 佈局，徹底根治元件散落感 */
+  grid-template-columns: 1.3fr 1fr 1fr; 
+  gap: 0;                        /* 改用欄位內邊距來推空間 */
+  align-items: flex-start;       /* 🔝 亮點 3：改為頂部對齊！讓元件挺拔起來，填補上方空洞 */
 }
 
-/* 🏢 1. 左側品牌群組 */
+/* 🏢 1. 左側品牌區 */
 .footer-brand {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  flex: 1;
+  padding-right: 40px;
 }
 
 .footer-logo-img {
   display: block;
-  max-width: 135px; /* 縮小比例更顯精緻 */
+  max-width: 135px;
   height: auto;
   margin-bottom: 4px;
   opacity: 0.95;
@@ -604,22 +608,23 @@ footer {
 }
 
 .footer-brand p {
-  color: rgba(255, 255, 255, 0.65); /* 莫蘭迪低飽和白，高質感不刺眼 */
-  font-size: 13px;
-  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13.5px;
+  line-height: 1.7;
   letter-spacing: 0.06em;
   margin: 0;
 }
 
-/* ✉️ 2. 中間聯絡方式群組 */
+/* ✉️ 2. 中間聯絡方式 (注入垂直工整分割線) */
 .footer-links {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  flex: 1;
-  padding-left: 60px; /* 稍微往右推，與左側品牌拉開舒適呼吸空間 */
-  margin-bottom: 2px; /* 微調基線對齊 */
+  gap: 10px;
+  /* 🧱 靈魂設計：加入極細的灰白垂直分割線，瞬間打破大片黑夜的空洞 */
+  border-left: 1px solid rgba(255, 255, 255, 0.08); 
+  padding-left: 55px;
+  margin-top: 12px;              /* 🛠️ 微調往下，讓標題完美對齊左邊英文字的高度 */
 }
 
 .footer-links h4 {
@@ -627,36 +632,37 @@ footer {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.1em;
-  margin: 0 0 4px 0;
+  margin: 0 0 6px 0;
 }
 
-/* ✉️ 中間聯絡方式群組中的連結 */
 .footer-links a {
   color: rgba(255, 255, 255, 0.55);
-  font-size: 13px;
+  font-size: 13.5px;
   text-decoration: none;
   letter-spacing: 0.05em;
-  line-height: 1.5;
+  line-height: 1.6;
   transition: color 0.3s ease;
-  
-  /* 🎯 融入精華：確保 JS 還在載入時，滑鼠移上去依然會出現「點擊小手」 */
-  cursor: pointer; 
-}
-/* 滑鼠懸停時顯現優雅的微亮 */
-.footer-links a:hover {
-  color: #f6c65b; /* 融入網頁點綴金黃色，增加互動感 */
+  cursor: pointer;               /* 保留 Email 的點擊小手手勢 */
 }
 
-/* 🤝 3. 右側母機構群組 */
+.footer-links a:hover {
+  color: #f6c65b;
+}
+
+/* 🤝 3. 右側母機構心路標章 */
 .footer-right-brand {
   display: flex;
-  justify-content: flex-end;
-  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* 🧱 第二條垂直分割線，形成工整的三欄雜誌排版架構 */
+  border-left: 1px solid rgba(255, 255, 255, 0.08); 
+  padding-left: 55px;
+  margin-top: 12px;              /* 完美同步頂部齊平線 */
 }
 
 .footer-syinlu-img {
   display: block;
-  max-width: 125px; /* 與左側標章達成視覺天平 */
+  max-width: 125px;
   height: auto;
   opacity: 0.85;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -667,12 +673,12 @@ footer {
   transform: translateY(-2px);
 }
 
-/* 🎯 4. 底部版權與英文金句 */
+/* 🎯 4. 底部版權與金句 */
 .footer-bottom {
-  max-width: 1140px;
-  margin: 50px auto 0 auto;
+  max-width: 1050px;
+  margin: 60px auto 0 auto;       /* 與上方收攏的三欄拉開完美比例 */
   padding: 35px 40px 0 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05); /* 細緻分隔線 */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
   color: rgba(255, 255, 255, 0.45);
   font-size: 12px;
@@ -681,48 +687,45 @@ footer {
 
 .footer-quote {
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.35); /* 隱約溫暖的哲學感留白 */
+  color: rgba(255, 255, 255, 0.35);
   font-style: italic;
-  font-family: 'Noto Serif TC', Georgia, serif; /* 優雅襯線體 */
+  font-family: 'Noto Serif TC', Georgia, serif;
   font-size: 13.5px;
   letter-spacing: 0.04em;
 }
+
 /* ==========================================
-   📱 手機裝置 RWD 完美視覺再造（完整區塊）
+   📱 手機裝置 RWD 完美適應 (切換回單欄並移除垂直線)
    ========================================== */
 @media (max-width: 768px) {
-  
-  /* 🎯 1. footer 標籤本身：縮減上下留白，符合手機體感 */
   footer {
     padding: 55px 0 45px 0 !important;
   }
   
-  /* 📐 2. 頁尾內部容器：改為「垂直置中單欄」排列 */
   .footer-inner {
+    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 40px !important;            /* 各區塊之間的上下間距 */
+    gap: 40px !important;
     padding: 0 24px !important;
   }
 
-  /* 🏢 3. 清除電腦版各欄位的左右推擠與留白 */
   .footer-brand, 
   .footer-links, 
   .footer-right-brand {
-    flex: none !important;
     width: 100% !important;
     align-items: center !important;
     justify-content: center !important;
-    padding-left: 0 !important;     /* 清除電腦版的向右推擠 */
+    padding: 0 !important;
+    margin-top: 0 !important;
+    border-left: none !important; /* 🎯 關鍵：手機版一定要關閉垂直線，才不會錯位 */
   }
 
-  /* 🔍 4. 微調新北庇護工場標章尺寸 */
   .footer-logo-img {
     max-width: 130px !important;
   }
 
-  /* ✉️ 5. 中間「聯絡方式」：上下加上若隱若現的細線，增加手機版層次感 */
   .footer-links {
     border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
@@ -730,24 +733,21 @@ footer {
     gap: 10px !important;
   }
 
-  /* 🤝 6. 微調心路基金會標章尺寸 */
   .footer-syinlu-img {
     max-width: 115px !important;
   }
 
-  /* 🎯 7. 底部版權宣告區塊微調 */
   .footer-bottom {
     margin-top: 40px !important;
     padding: 25px 24px 0 24px !important;
-    font-size: 11px !important;      /* 手機版字體稍微縮小 */
+    font-size: 11px !important;
     line-height: 1.7 !important;
   }
   
-  /* 📜 8. 底部英文金句微調 */
   .footer-quote {
     font-size: 12px !important;
     margin-top: 8px !important;
-    padding: 0 10px !important;     /* 防止金句太貼手機左右邊緣 */
+    padding: 0 10px !important;
   }
 }
 /* ===== SCROLL REVEAL ===== */
