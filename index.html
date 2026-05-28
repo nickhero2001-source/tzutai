@@ -566,106 +566,136 @@ section{position:relative;z-index:1}
 /* ==========================================================================
    ===== FOOTER 頂級美學重塑版 (徹底解決網頁版散落、空洞問題) =====
    ========================================================================== */
+/* ===== FOOTER ===== */
 footer {
-  background-color: #0e1f38;
-  padding: 85px 0 65px 0;          /* 📐 稍微拉高上下留白，彰顯大氣質感 */
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, #07101e 0%, #0a1628 100%);
+  padding: 72px 0 0 0;
+  border-top: 1px solid rgba(246,198,91,.12);
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(246,198,91,.4) 30%, rgba(246,198,91,.6) 50%, rgba(246,198,91,.4) 70%, transparent);
 }
 
 .footer-inner {
-  max-width: 1050px;             /* 🎯 亮點 1：縮緊最大寬度，讓資訊往中間黃金比例靠攏 */
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 0 40px;
-  display: grid;                 /* 📊 亮點 2：改用精準的 Grid 佈局，徹底根治元件散落感 */
-  grid-template-columns: 1.3fr 1fr 1fr; 
-  gap: 0;                        /* 改用欄位內邊距來推空間 */
-  align-items: flex-start;       /* 🔝 亮點 3：改為頂部對齊！讓元件挺拔起來，填補上方空洞 */
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1.8fr 1px 1fr;
+  gap: 0;
+  align-items: start;
 }
 
-/* 🏢 1. 左側品牌區 */
+/* 垂直分割線 */
+.footer-divider {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.1) 20%, rgba(255,255,255,.1) 80%, transparent);
+  align-self: stretch;
+  margin: 0 48px;
+}
+
+/* 左側品牌區 */
 .footer-brand {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  padding-right: 40px;
+  gap: 20px;
+  padding-right: 32px;
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-logo-divider {
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.25) 30%, rgba(255,255,255,.25) 70%, transparent);
 }
 
 .footer-logo-img {
   display: block;
-  max-width: 135px;
-  height: auto;
-  margin-bottom: 4px;
+  height: 52px;
+  width: auto;
   opacity: 0.95;
 }
 
 .footer-brand .logo {
-  color: #ffffff;
-  font-size: 19px;
+  color: var(--gold);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: .35em;
   text-transform: uppercase;
+  opacity: .75;
 }
 
 .footer-brand p {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 13.5px;
-  line-height: 1.7;
-  letter-spacing: 0.06em;
-  margin: 0;
+  color: rgba(255,255,255,.4);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: .08em;
+  margin-top: -8px;
 }
 
-/* ✉️ 2. 中間聯絡方式 (注入垂直工整分割線) */
+/* 中間聯絡方式 */
 .footer-links {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  /* 🧱 靈魂設計：加入極細的灰白垂直分割線，瞬間打破大片黑夜的空洞 */
-  border-left: 1px solid rgba(255, 255, 255, 0.08); 
-  padding-left: 55px;
-  margin-top: 12px;              /* 🛠️ 微調往下，讓標題完美對齊左邊英文字的高度 */
+  gap: 12px;
+  padding-left: 48px;
 }
 
 .footer-links h4 {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  margin: 0 0 6px 0;
+  color: rgba(246,198,91,.6);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 13.5px;
+  color: rgba(255,255,255,.45);
+  font-size: 13px;
   text-decoration: none;
-  letter-spacing: 0.05em;
+  letter-spacing: .06em;
   line-height: 1.6;
-  transition: color 0.3s ease;
-  cursor: pointer;               /* 保留 Email 的點擊小手手勢 */
+  transition: color .3s;
 }
 
-.footer-links a:hover {
-  color: #f6c65b;
-}
+.footer-links a:hover { color: var(--gold); }
 
-/* 🤝 3. 右側母機構心路標章 */
+/* 右側合作夥伴 */
 .footer-right-brand {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  /* 🧱 第二條垂直分割線，形成工整的三欄雜誌排版架構 */
-  border-left: 1px solid rgba(255, 255, 255, 0.08); 
-  padding-left: 55px;
-  margin-top: 12px;              /* 完美同步頂部齊平線 */
+  flex-direction: column;
+  gap: 14px;
+  padding-left: 48px;
+}
+
+.footer-right-brand h4 {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: .85;
 }
 
 .footer-syinlu-img {
   display: block;
-  max-width: 125px;
-  height: auto;
-  opacity: 0.85;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  height: 48px;
+  width: auto;
+  opacity: .85;
+  transition: opacity .3s, transform .3s;
 }
 
 .footer-syinlu-img:hover {
@@ -673,25 +703,28 @@ footer {
   transform: translateY(-2px);
 }
 
-/* 🎯 4. 底部版權與金句 */
+/* 底部版權 */
 .footer-bottom {
-  max-width: 1050px;
-  margin: 60px auto 0 auto;       /* 與上方收攏的三欄拉開完美比例 */
-  padding: 35px 40px 0 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 1080px;
+  margin: 56px auto 0;
+  padding: 28px 48px 40px;
+  border-top: 1px solid rgba(255,255,255,.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 12px;
-  letter-spacing: 0.06em;
+  color: rgba(255,255,255,.22);
+  font-size: 11px;
+  letter-spacing: .1em;
 }
 
 .footer-quote {
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(246,198,91,.25);
   font-style: italic;
   font-family: 'Noto Serif TC', Georgia, serif;
-  font-size: 13.5px;
-  letter-spacing: 0.04em;
+  font-size: 12px;
+  letter-spacing: .06em;
 }
 
 /* ==========================================
@@ -699,7 +732,7 @@ footer {
    ========================================== */
 @media (max-width: 768px) {
   footer {
-    padding: 55px 0 45px 0 !important;
+    padding: 52px 0 0 0 !important;
   }
   
   .footer-inner {
@@ -707,46 +740,49 @@ footer {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 40px !important;
-    padding: 0 24px !important;
+    gap: 36px !important;
+    padding: 0 28px !important;
   }
 
-  .footer-brand, 
-  .footer-links, 
+  .footer-divider {
+    display: none !important;
+  }
+
+  .footer-brand,
+  .footer-links,
   .footer-right-brand {
     width: 100% !important;
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-    margin-top: 0 !important;
-    border-left: none !important; /* 🎯 關鍵：手機版一定要關閉垂直線，才不會錯位 */
+    margin: 0 !important;
+    border: none !important;
   }
 
   .footer-logo-img {
-    max-width: 130px !important;
+    height: 36px !important;
   }
 
   .footer-links {
-    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-    padding: 25px 0 !important;
-    gap: 10px !important;
+    border-top: 1px solid rgba(255,255,255,.06) !important;
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+    padding: 28px 0 !important;
+    align-items: center !important;
   }
 
   .footer-syinlu-img {
-    max-width: 115px !important;
+    height: 44px !important;
   }
 
   .footer-bottom {
     margin-top: 40px !important;
-    padding: 25px 24px 0 24px !important;
+    padding: 24px 24px 32px !important;
     font-size: 11px !important;
     line-height: 1.7 !important;
   }
   
   .footer-quote {
     font-size: 12px !important;
-    margin-top: 8px !important;
     padding: 0 10px !important;
   }
 }
@@ -1094,12 +1130,18 @@ footer {
 
 <footer>
   <div class="footer-inner">
-    
+
     <div class="footer-brand">
-      <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
+      <div class="footer-logos">
+        <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
+        <div class="footer-logo-divider"></div>
+        <img src="images/心路LOGO.webp" alt="心路社會福利基金會" class="footer-syinlu-img">
+      </div>
       <span class="logo">TZU-TAI Bremen</span>
       <p>新北市慈泰庇護工場<br>讓每一個人都有能力創造價值</p>
     </div>
+
+    <div class="footer-divider"></div>
 
     <div class="footer-links">
       <h4>聯絡方式</h4>
@@ -1107,11 +1149,13 @@ footer {
       <a href="#" class="footer-contact-text">新北市慈泰庇護工場</a>
     </div>
 
+    <div class="footer-divider"></div>
+
     <div class="footer-right-brand">
-      <img src="images/心路LOGO.webp" alt="心路社會福利基金會" class="footer-syinlu-img">
     </div>
 
-  </div> <div class="footer-bottom">
+  </div>
+  <div class="footer-bottom">
     © 2026 新北市慈泰庇護工場 · TZU-TAI Bremen · 版權所有
     <div class="footer-quote">"Success is not the key to happiness — Happiness is the key to success"</div>
   </div>
