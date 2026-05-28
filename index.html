@@ -611,7 +611,38 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
   font-style:italic;color:rgba(255,255,255,.4);
   margin-top:12px;font-size:13px;
 }
+/* 🌟 右側心路 LOGO 專屬樣式 */
+.footer-right-brand {
+  display: flex;
+  align-items: flex-end;   /* 📐 關鍵：讓 LOGO 在該欄位中完美「貼齊右下角」 */
+  justify-content: flex-end;
+  min-width: 160px;        /* 確保基本寬度，防止被其他欄位擠壓 */
+}
 
+.footer-syinlu-img {
+  max-width: 140px;         /* 🔍 電腦版合適的細緻寬度，可依視覺感受增減 */
+  height: auto;
+  opacity: 0.85;            /* 🎨 微微降低飽和度，高質感地融入夜空底色 */
+  transition: opacity 0.3s ease;
+}
+
+.footer-syinlu-img:hover {
+  opacity: 1;              /* 滑鼠移過去時亮起 */
+}
+
+/* 📱 貼心照顧手機裝置排版 */
+@media (max-width: 768px) {
+  .footer-right-brand {
+    justify-content: center; /* 手機版時，自動轉為底部的水平置中 */
+    align-items: center;
+    margin-top: 35px;        /* 與上方的快速連結保持舒適的呼吸留白 */
+    width: 100%;
+  }
+  
+  .footer-syinlu-img {
+    max-width: 115px;        /* 手機螢幕較窄，將 LOGO 稍微縮小更精緻 */
+  }
+}
 /* ===== SCROLL REVEAL ===== */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -955,13 +986,14 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-inner">
+ <div class="footer-inner">
+    
     <div class="footer-brand">
-       <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
-      
+      <img src="images/新北市庇護工場logo.webp" alt="新北市庇護工場" class="footer-logo-img">
       <span class="logo">TZU-TAI Bremen</span>
       <p>新北市慈泰庇護工場<br>讓每一個人都有能力創造價值</p>
     </div>
+
     <div class="footer-links">
       <h4>快速連結</h4>
       <a href="#story">我們的故事</a>
@@ -969,6 +1001,11 @@ footer{background:#07101e;color:rgba(255,255,255,.5);padding:60px 40px;}
       <a href="#products">產品系列</a>
       <a href="#enterprise">企業合作</a>
     </div>
+
+    <div class="footer-right-brand">
+      <img src="images/心路基金會logo.webp" alt="心路社會福利基金會" class="footer-syinlu-img">
+    </div>
+
     <div class="footer-links">
       <h4>聯絡方式</h4>
       <!-- ✅ 安全修正 5：Email 不寫死在 HTML，由 JS 動態組裝 -->
