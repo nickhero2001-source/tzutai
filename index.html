@@ -498,6 +498,10 @@ section{position:relative;z-index:1}
   background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
   display:flex;align-items:center;justify-content:center;
 }
+.product-photo-img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
 .product-body{padding:32px}
 .product-name{
   font-family:'Noto Serif TC',serif;
@@ -1079,29 +1083,7 @@ footer::before {
       </div>
       <div class="product-card reveal reveal-delay-3">
         <div class="product-img-wrap">
-          <svg viewBox="0 0 200 180" width="200" height="180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#f9d46e" stop-opacity=".9"/>
-                <stop offset="60%" stop-color="#e8a92a" stop-opacity=".6"/>
-                <stop offset="100%" stop-color="#e8a92a" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <circle cx="100" cy="80" r="55" fill="url(#moonGlow)"/>
-            <circle cx="100" cy="80" r="38" fill="#f9d46e"/>
-            <circle cx="115" cy="68" r="30" fill="#1F3A5F"/>
-            <circle cx="50" cy="45" r="2.5" fill="#F6C65B"/>
-            <circle cx="158" cy="55" r="2" fill="#F6C65B"/>
-            <circle cx="40" cy="110" r="1.8" fill="#F6C65B" opacity=".7"/>
-            <circle cx="165" cy="100" r="2.5" fill="#F6C65B" opacity=".8"/>
-            <circle cx="75" cy="140" r="1.5" fill="#F6C65B" opacity=".6"/>
-            <circle cx="135" cy="145" r="2" fill="#F6C65B" opacity=".7"/>
-            <path d="M50 45 L51.2 49 L55 50 L51.2 51 L50 55 L48.8 51 L45 50 L48.8 49Z" fill="#F6C65B" opacity=".9"/>
-            <path d="M158 55 L159 58 L162 59 L159 60 L158 63 L157 60 L154 59 L157 58Z" fill="#F6C65B"/>
-            <rect x="80" y="120" width="40" height="44" rx="20" fill="rgba(246,198,91,.15)" stroke="rgba(246,198,91,.3)" stroke-width="1"/>
-            <rect x="96" y="115" width="8" height="8" rx="2" fill="rgba(246,198,91,.4)"/>
-            <line x1="100" y1="164" x2="100" y2="174" stroke="rgba(246,198,91,.4)" stroke-width="2"/>
-          </svg>
+          <img src="images/好日慢慢.webp" alt="季節限定企劃" class="product-photo-img">
         </div>
         <div class="product-body">
           <div class="product-name">季節限定企劃</div>
