@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Email 安全處理
-    const emailUser = "tzutai.bremen";
-    const emailDomain = "gmail.com";
+    const emailUser = "2015035";
+    const emailDomain = "ms.syinlu.org.tw";
     const fullEmail = emailUser + "@" + emailDomain;
 
     const contactEmailBtn = document.getElementById('contactEmailBtn');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactEmailBtn) contactEmailBtn.href = "mailto:" + fullEmail + "?subject=【企業合作洽詢】";
     if (footerEmailLink) {
-        footerEmailLink.innerText = fullEmail;
+        footerEmailLink.innerText = "聯絡電子信箱";
         footerEmailLink.href = "mailto:" + fullEmail;
     }
 
