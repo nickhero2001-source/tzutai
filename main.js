@@ -120,16 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // 6. SDG 永續影響力區塊 — 數字跳動動畫
+    // 6. SDG 永續影響力區塊 — 數字跳動動畫（IntersectionObserver，手機/桌機皆穩定觸發）
     (function(){
-        let counted = false;
+        const numbersBlock = document.querySelector('.imp-numbers');
+        if (!numbersBlock) return;
+
         function runCountUp(){
-            if (counted) return;
-            const numbersBlock = document.querySelector('.imp-numbers');
-            if (!numbersBlock) return;
-            const rect = numbersBlock.getBoundingClientRect();
-            if (rect.top > window.innerHeight * 0.9) return;
-            counted = true;
             numbersBlock.querySelectorAll('.num[data-count]').forEach((el) => {
                 const target = parseInt(el.getAttribute('data-count'), 10);
                 const suffix = el.getAttribute('data-suffix') || '';
@@ -149,7 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(step);
             });
         }
-        window.addEventListener('scroll', runCountUp);
-        runCountUp();
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        runCountUp();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(numbersBlock);
+        } else {
+            // 舊瀏覽器 fallback
+            runCountUp();
+        }
     })();
 });
