@@ -1170,40 +1170,6 @@ footer::before {
   </div>
 </section>
 
-
-<script>
-(function(){
-  // Count-up animation for impact numbers
-  var counted = false;
-  function runCountUp(){
-    if(counted) return;
-    var numbersBlock = document.querySelector('.imp-numbers');
-    if(!numbersBlock) return;
-    var rect = numbersBlock.getBoundingClientRect();
-    if(rect.top > window.innerHeight * 0.9) return;
-    counted = true;
-    numbersBlock.querySelectorAll('.num[data-count]').forEach(function(el){
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var suffix = el.getAttribute('data-suffix') || '';
-      var current = 0;
-      var duration = 1200;
-      var startTime = null;
-      function step(ts){
-        if(!startTime) startTime = ts;
-        var progress = Math.min((ts - startTime) / duration, 1);
-        current = Math.floor(progress * target);
-        el.textContent = current + suffix;
-        if(progress < 1){ requestAnimationFrame(step); }
-        else { el.textContent = target + suffix; }
-      }
-      requestAnimationFrame(step);
-    });
-  }
-  window.addEventListener('scroll', runCountUp);
-  runCountUp();
-})();
-</script>
-
 <!-- ENTERPRISE -->
 
 
