@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Email 安全處理
+    // 1. Google 表單
+const formUrl = "https://forms.gle/pMBpXsSpxUBdg5Bf6";
+
+const contactEmailBtn = document.getElementById('contactEmailBtn');
+const footerEmailLink = document.getElementById('footerEmailLink');
+
+if (contactEmailBtn) {
+    contactEmailBtn.href = formUrl;
+    contactEmailBtn.target = "_blank";
+    contactEmailBtn.rel = "noopener noreferrer";
+}
+
+if (footerEmailLink) {
+    footerEmailLink.href = formUrl;
+    footerEmailLink.target = "_blank";
+    footerEmailLink.rel = "noopener noreferrer";
+    footerEmailLink.textContent = "企業合作表單";
+}
     // 2. 導覽列滾動效果
     const mainNav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
