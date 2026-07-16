@@ -19,6 +19,18 @@
   Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' https://i.ibb.co https://imagedelivery.net data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; connect-src 'self'; frame-src 'none'
 
   # =========================
-  # Cache（靜態站最佳化）
+  # Cache（靜態資源預設：長快取，適合圖片等不常更動的檔案）
   # =========================
   Cache-Control: public, max-age=3153600
+
+# =========================
+# 常更新的檔案：短快取，改完馬上生效
+# =========================
+/index.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+/main.js
+  Cache-Control: public, max-age=300, must-revalidate
+
+/fb-pixel.js
+  Cache-Control: public, max-age=300, must-revalidate
