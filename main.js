@@ -119,4 +119,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
+
+    // 6. SDG 永續影響力區塊 — 數字跳動動畫
+    (function(){
+        let counted = false;
+        function runCountUp(){
+            if (counted) return;
+            const numbersBlock = document.querySelector('.imp-numbers');
+            if (!numbersBlock) return;
+            const rect = numbersBlock.getBoundingClientRect();
+            if (rect.top > window.innerHeight * 0.9) return;
+            counted = true;
+            numbersBlock.querySelectorAll('.num[data-count]').forEach((el) => {
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                const suffix = el.getAttribute('data-suffix') || '';
+                const duration = 1200;
+                let startTime = null;
+                function step(ts){
+                    if (!startTime) startTime = ts;
+                    const progress = Math.min((ts - startTime) / duration, 1);
+                    const current = Math.floor(progress * target);
+                    el.textContent = current + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = target + suffix;
+                    }
+                }
+                requestAnimationFrame(step);
+            });
+        }
+        window.addEventListener('scroll', runCountUp);
+        runCountUp();
+    })();
 });
