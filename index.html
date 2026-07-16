@@ -1086,48 +1086,21 @@ footer::before {
 .imp-title{font-family:'Noto Serif TC',serif;font-size:34px;line-height:1.4;color:#1F2937;margin-bottom:20px}
 .imp-subtitle{font-size:15px;line-height:1.9;color:#6B7280}
 
-.imp-main{display:grid;grid-template-columns:38% 62%;gap:32px;align-items:start;margin-bottom:56px}
-
-.imp-panel{background:#F7F8F9;border:1px solid #E5E7EB;border-radius:20px;padding:36px 28px;position:sticky;top:100px}
-.imp-panel h3{font-family:'Noto Serif TC',serif;font-size:19px;color:#1F2937;margin-bottom:6px}
-.imp-panel > p{font-size:13px;color:#6B7280;margin-bottom:28px;line-height:1.7}
-
-.imp-icon-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.imp-icon-btn{
-  grid-column:span 1;border:1px solid #E5E7EB;background:#FFFFFF;border-radius:14px;
-  padding:16px 10px;cursor:pointer;text-align:center;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-  font-family:inherit;
-}
-.imp-icon-btn:nth-child(5){grid-column:1 / span 2;max-width:calc(50% - 7px);margin:0 auto}
-.imp-icon-btn:hover,.imp-icon-btn.active{transform:scale(1.05);box-shadow:0 8px 20px rgba(0,0,0,.08);border-color:var(--sdg-c)}
-.imp-icon-badge{
-  width:40px;height:40px;border-radius:10px;margin:0 auto 10px;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--sdg-c);color:#fff;font-weight:700;font-size:13px;font-family:'Noto Sans TC',sans-serif;
-}
-.imp-icon-btn .imp-icon-label{display:block;font-size:11px;color:#6B7280;line-height:1.4}
-
-.imp-panel-note{
-  margin-top:18px;padding:16px;border-radius:12px;background:#FFFFFF;border:1px solid #E5E7EB;
-  font-size:12.5px;color:#374151;line-height:1.7;min-height:52px;transition:opacity .25s ease;
-}
-
-.imp-cards{display:flex;flex-direction:column;gap:18px}
-.imp-card{
-  background:#FFFFFF;border:1px solid #E5E7EB;border-radius:18px;padding:28px 30px 26px 26px;
-  display:grid;grid-template-columns:auto 1fr;column-gap:26px;align-items:center;
-  border-left:5px solid var(--sdg-c);
+.imp-sdg-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-bottom:44px}
+.imp-sdg-card{
+  background:#FFFFFF;border:1px solid #E5E7EB;border-top:4px solid var(--sdg-c);border-radius:16px;
+  padding:28px 18px 24px;text-align:center;
   box-shadow:0 2px 10px rgba(17,24,39,.03);
   transition:transform .3s ease,box-shadow .3s ease;
 }
-.imp-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(17,24,39,.08)}
-.imp-card-stat{text-align:center;min-width:104px}
-.imp-card-stat .num{display:block;font-size:38px;font-weight:700;color:var(--sdg-c);font-family:'Noto Serif TC',serif;line-height:1}
-.imp-card-stat .unit{display:block;font-size:12px;color:#6B7280;margin-top:6px}
-.imp-card-body .tag{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--sdg-c)}
-.imp-card-body h4{font-family:'Noto Serif TC',serif;font-size:18px;color:#1F2937;margin:6px 0 10px}
-.imp-card-body p.desc{font-size:13.5px;color:#6B7280;line-height:1.8;margin-bottom:12px}
-.imp-card-body footer{font-size:11px;letter-spacing:.06em;color:#9CA3AF;text-transform:uppercase}
+.imp-sdg-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(17,24,39,.08)}
+.imp-sdg-badge{
+  width:40px;height:40px;border-radius:10px;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--sdg-c);color:#fff;font-weight:700;font-size:14px;font-family:'Noto Sans TC',sans-serif;
+}
+.imp-sdg-card h4{font-family:'Noto Serif TC',serif;font-size:15px;color:#1F2937;margin-bottom:8px;line-height:1.5}
+.imp-sdg-card p{font-size:12.5px;color:#6B7280;line-height:1.6}
 
 .imp-numbers{
   background:linear-gradient(120deg,#2E7D32 0%,#1B5E20 100%);
@@ -1142,26 +1115,15 @@ footer::before {
 .imp-esg-card .esg-tag{font-size:11px;font-weight:700;letter-spacing:.12em;color:#2E7D32;margin-bottom:10px;display:block}
 .imp-esg-card .esg-val{font-size:14.5px;color:#1F2937;line-height:1.7}
 
-.imp-cta{background:#1B3A20;padding:80px 24px;text-align:center}
-.imp-cta-inner{max-width:640px;margin:0 auto}
-.imp-cta h2{font-family:'Noto Serif TC',serif;color:#fff;font-size:28px;line-height:1.6;margin-bottom:20px}
-.imp-cta p{color:rgba(255,255,255,.75);font-size:14.5px;line-height:1.9;margin-bottom:34px}
-.imp-cta-btn{
-  display:inline-block;background:#2E7D32;color:#fff;font-weight:600;font-size:15px;
-  padding:15px 40px;border-radius:50px;text-decoration:none;transition:all .25s ease;
-}
-.imp-cta-btn:hover{background:#256428;transform:scale(1.02)}
 
 @media (max-width:900px){
-  .imp-main{grid-template-columns:1fr}
-  .imp-panel{position:static}
+  .imp-sdg-grid{grid-template-columns:repeat(3,1fr)}
   .imp-numbers{grid-template-columns:repeat(2,1fr)}
   .imp-esg-grid{grid-template-columns:repeat(2,1fr)}
-  .imp-card{grid-template-columns:1fr;text-align:center;row-gap:14px}
-  .imp-card-stat{margin:0 auto}
 }
 @media (max-width:520px){
   .imp-title{font-size:26px}
+  .imp-sdg-grid{grid-template-columns:repeat(2,1fr)}
   .imp-numbers{grid-template-columns:1fr 1fr;padding:32px 20px}
   .imp-esg-grid{grid-template-columns:1fr}
 }
@@ -1175,85 +1137,31 @@ footer::before {
       <p class="imp-subtitle">每一份企業採購，都同時支持庇護就業、綠色製造與永續發展。<br>讓每一次送禮，都成為企業 ESG 的具體實踐。</p>
     </div>
 
-    <div class="imp-main">
-      <div class="imp-panel reveal">
-        <h3>對應 SDGs</h3>
-        <p>本次企業採購所創造的永續成果</p>
-        <div class="imp-icon-grid" id="impIconGrid">
-          <button type="button" class="imp-icon-btn" style="--sdg-c:#A21942" data-note="提供身心障礙者穩定就業機會，提升工作技能，建立經濟自主能力。">
-            <span class="imp-icon-badge">8</span>
-            <span class="imp-icon-label">良好工作與<br>經濟成長</span>
-          </button>
-          <button type="button" class="imp-icon-btn" style="--sdg-c:#DD1367" data-note="建立公平工作機會，促進多元共融，降低身心障礙者就業障礙。">
-            <span class="imp-icon-badge">10</span>
-            <span class="imp-icon-label">減少不平等</span>
-          </button>
-          <button type="button" class="imp-icon-btn" style="--sdg-c:#BF8B2E" data-note="推動永續生產流程，鼓勵責任採購，建立兼顧品質與環境的供應鏈。">
-            <span class="imp-icon-badge">12</span>
-            <span class="imp-icon-label">責任消費<br>與生產</span>
-          </button>
-          <button type="button" class="imp-icon-btn" style="--sdg-c:#3F7E44" data-note="持續提升再生能源使用比例，降低生產對環境造成的影響，實踐低碳製造。">
-            <span class="imp-icon-badge">13</span>
-            <span class="imp-icon-label">氣候行動</span>
-          </button>
-          <button type="button" class="imp-icon-btn" style="--sdg-c:#19486A" data-note="攜手企業共同推動 ESG，透過永續採購，創造共享價值。">
-            <span class="imp-icon-badge">17</span>
-            <span class="imp-icon-label">夥伴關係</span>
-          </button>
-        </div>
-        <div class="imp-panel-note" id="impPanelNote">點選左側任一目標，查看具體實踐內容</div>
+    <div class="imp-sdg-grid">
+      <div class="imp-sdg-card reveal reveal-delay-1" style="--sdg-c:#A21942">
+        <span class="imp-sdg-badge">8</span>
+        <h4>良好工作與經濟成長</h4>
+        <p>支持 160 位身心障礙者穩定就業</p>
       </div>
-
-      <div class="imp-cards">
-        <article class="imp-card reveal" style="--sdg-c:#A21942">
-          <div class="imp-card-stat"><span class="num">160 位</span></div>
-          <div class="imp-card-body">
-            <span class="tag">SDG 8</span>
-            <h4>良好工作與經濟成長</h4>
-            <p class="desc">提供身心障礙者穩定就業機會，提升工作技能，建立經濟自主能力，打造包容性的就業環境。</p>
-            <footer>Support Inclusive Employment</footer>
-          </div>
-        </article>
-
-        <article class="imp-card reveal" style="--sdg-c:#DD1367">
-          <div class="imp-card-stat"><span class="num">多元<br>共融</span></div>
-          <div class="imp-card-body">
-            <span class="tag">SDG 10</span>
-            <h4>減少不平等</h4>
-            <p class="desc">建立公平工作機會，促進多元共融，降低身心障礙者就業障礙，讓每個人都有發揮能力的舞台。</p>
-            <footer>Inclusive Society</footer>
-          </div>
-        </article>
-
-        <article class="imp-card reveal" style="--sdg-c:#BF8B2E">
-          <div class="imp-card-stat"><span class="num">責任<br>供應鏈</span></div>
-          <div class="imp-card-body">
-            <span class="tag">SDG 12</span>
-            <h4>責任消費與生產</h4>
-            <p class="desc">推動永續生產流程，鼓勵責任採購，建立兼顧品質與環境的供應鏈。</p>
-            <footer>Responsible Production</footer>
-          </div>
-        </article>
-
-        <article class="imp-card reveal" style="--sdg-c:#3F7E44">
-          <div class="imp-card-stat"><span class="num">20%</span></div>
-          <div class="imp-card-body">
-            <span class="tag">SDG 13</span>
-            <h4>氣候行動</h4>
-            <p class="desc">持續提升再生能源使用比例，降低產品生產對環境造成的影響，實踐低碳製造。</p>
-            <footer>Climate Action</footer>
-          </div>
-        </article>
-
-        <article class="imp-card reveal" style="--sdg-c:#19486A">
-          <div class="imp-card-stat"><span class="num">共享<br>價值</span></div>
-          <div class="imp-card-body">
-            <span class="tag">SDG 17</span>
-            <h4>夥伴關係</h4>
-            <p class="desc">攜手企業共同推動 ESG，透過永續採購，創造共享價值，讓商業合作成為改變社會的力量。</p>
-            <footer>Partnership for Sustainability</footer>
-          </div>
-        </article>
+      <div class="imp-sdg-card reveal reveal-delay-2" style="--sdg-c:#DD1367">
+        <span class="imp-sdg-badge">10</span>
+        <h4>減少不平等</h4>
+        <p>促進多元共融的就業環境</p>
+      </div>
+      <div class="imp-sdg-card reveal reveal-delay-3" style="--sdg-c:#BF8B2E">
+        <span class="imp-sdg-badge">12</span>
+        <h4>責任消費與生產</h4>
+        <p>建立負責任的永續供應鏈</p>
+      </div>
+      <div class="imp-sdg-card reveal reveal-delay-4" style="--sdg-c:#3F7E44">
+        <span class="imp-sdg-badge">13</span>
+        <h4>氣候行動</h4>
+        <p>生產用電 20% 採用綠電</p>
+      </div>
+      <div class="imp-sdg-card reveal" style="--sdg-c:#19486A">
+        <span class="imp-sdg-badge">17</span>
+        <h4>夥伴關係</h4>
+        <p>攜手企業共創社會價值</p>
       </div>
     </div>
 
@@ -1284,35 +1192,11 @@ footer::before {
       </div>
     </div>
   </div>
-
-  <div class="imp-cta reveal">
-    <div class="imp-cta-inner">
-      <h2>讓每一份企業採購，<br>都成為永續影響力的一部分</h2>
-      <p>企業送禮，不只是傳遞心意，更能支持庇護就業、環境永續與社會共融，讓每一次採購，都成為企業 ESG 的最佳實踐。</p>
-      <a href="#enterprise" class="imp-cta-btn">立即洽詢企業採購</a>
-    </div>
-  </div>
 </section>
+
 
 <script>
 (function(){
-  // SDG icon -> note toggle
-  var grid = document.getElementById('impIconGrid');
-  var note = document.getElementById('impPanelNote');
-  if(grid && note){
-    grid.querySelectorAll('.imp-icon-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        grid.querySelectorAll('.imp-icon-btn').forEach(function(b){b.classList.remove('active')});
-        btn.classList.add('active');
-        note.style.opacity = 0;
-        setTimeout(function(){
-          note.textContent = btn.getAttribute('data-note');
-          note.style.opacity = 1;
-        }, 150);
-      });
-    });
-  }
-
   // Count-up animation for impact numbers
   var counted = false;
   function runCountUp(){
