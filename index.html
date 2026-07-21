@@ -956,11 +956,7 @@ footer::before {
     <li><a href="#products">產品系列</a></li>
     <li><a href="#enterprise">企業合作</a></li>
   </ul>
-  <a href="https://forms.gle/pMBpXsSpxUBdg5Bf6"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="nav-cta">
-   洽詢採購</a>
+  <a href="#enterprise" class="nav-cta">洽詢採購</a>
   <button class="hamburger" id="hamburger" aria-label="選單">
     <span></span><span></span><span></span>
   </button>
@@ -1083,6 +1079,534 @@ footer::before {
   </div>
 </section>
 
+
+<style>
+.gift-collections{background:var(--warm);padding:100px 24px}
+.gc-container{max-width:1180px;margin:0 auto}
+.gc-header{text-align:center;max-width:640px;margin:0 auto 64px}
+.gc-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.35em;color:var(--gold2);margin-bottom:18px}
+.gc-title{font-family:'Noto Serif TC',serif;font-size:34px;line-height:1.4;color:var(--navy2);margin-bottom:20px}
+.gc-subtitle{font-size:15px;line-height:1.9;color:var(--muted)}
+
+.gc-series{margin-bottom:60px}
+.gc-series:last-child{margin-bottom:0}
+.gc-series-header{
+  display:flex;align-items:center;gap:16px;margin-bottom:26px;padding-bottom:16px;
+  border-bottom:1px solid rgba(31,58,95,.14);
+}
+.gc-series-icon{
+  width:48px;height:48px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.gc-series-name{font-family:'Noto Serif TC',serif;font-size:19px;font-weight:700;color:var(--navy2)}
+.gc-series-note{font-size:13px;color:var(--muted);margin-top:4px}
+
+.gc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.gc-card{
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 4px 16px rgba(14,31,56,.06);
+  transition:transform .3s ease,box-shadow .3s ease;
+  display:flex;flex-direction:column;
+}
+.gc-card:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(14,31,56,.12)}
+.gc-card-img-wrap{height:180px;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%)}
+.gc-card-img{width:100%;height:100%;object-fit:cover;display:block}
+.gc-card-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.gc-card-no-img .gc-card-body{padding-top:24px}
+.gc-card-tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--gold2);text-transform:uppercase}
+.gc-card-name{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;color:var(--navy2);line-height:1.5;margin:2px 0}
+.gc-card-sub{font-size:12.5px;color:var(--muted)}
+.gc-card-items{list-style:none;padding:0;margin:8px 0 0;font-size:12px;color:var(--muted);line-height:1.85}
+.gc-card-items li{padding-left:14px;position:relative}
+.gc-card-items li::before{content:'·';position:absolute;left:0;top:0;color:var(--gold2);font-weight:700}
+.gc-card-layer{margin-top:12px;padding-top:12px;border-top:1px dashed rgba(31,58,95,.16)}
+.gc-card-layer-title{font-size:12.5px;font-weight:700;color:var(--navy2);margin-bottom:4px}
+.gc-card-footer{margin-top:auto;padding-top:14px;display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.gc-card-price{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:var(--gold2)}
+.gc-card-note{font-size:11px;color:var(--muted);font-style:italic}
+
+@media (max-width:640px){
+  .gc-title{font-size:26px}
+  .gc-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .gc-card-img-wrap{height:140px}
+  .gc-series-header{gap:12px}
+  .gc-series-icon{width:40px;height:40px;font-size:18px}
+}
+</style>
+
+<!-- GIFT COLLECTIONS -->
+
+<section class="gift-collections" id="gift-collections">
+  <div class="gc-container">
+    <div class="gc-header reveal">
+      <span class="gc-eyebrow">GIFT COLLECTIONS</span>
+      <h2 class="gc-title">精選禮盒系列</h2>
+      <p class="gc-subtitle">從鐵盒典藏到聯名限定，每一款禮盒都由夥伴們親手完成，<br>找到最適合這份心意的樣子。</p>
+    </div>
+
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🎶</div>
+        <div>
+          <div class="gc-series-name">星空下的不來梅樂手 · 週年紀念鐵盒</div>
+          <div class="gc-series-note">鐵盒典藏，星光設計，珍貴收藏款</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/不來梅單層綜果款.webp" alt="星空不來梅 · 綜果款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">鐵盒 · 單層</span>
+            <h4 class="gc-card-name">星空不來梅 · 綜果款</h4>
+            <p class="gc-card-sub">單層 · 固定口味</p>
+            <ul class="gc-card-items"><li>鳳茶酥 2顆（濃茶金萱×1、伯爵紅烏龍×1）</li><li>米葉果果 4片（蜂蜜伯爵×2、微辣起司×2）</li><li>餅乾 5片（蜜香紅茶×2、金萱×3）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$420</span>
+              <span class="gc-card-note">口味固定無法挑選</span>
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/不來梅雙層綜果款.webp" alt="星空不來梅 · 雙層綜果款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">鐵盒 · 雙層</span>
+            <h4 class="gc-card-name">星空不來梅 · 雙層綜果款</h4>
+            <p class="gc-card-sub">雙層豐富內容</p>
+            <ul class="gc-card-items"><li>芝麻短蛋捲 7入</li><li>餅乾 5片（蜜香紅茶×2、金萱×3）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>芝麻短蛋捲 7入</li><li>餅乾 5片（蜜香紅茶×2、金萱×3）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>鳳茶酥 2顆（濃茶金萱×1、伯爵紅烏龍×1）</li><li>米葉果果 4片（蜂蜜伯爵×2、微辣起司×2）</li><li>餅乾 5片（南杏、蔓杏、巧核、摩可、柚子各1）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$820</span>
+              <span class="gc-card-note">口味固定無法挑選</span>
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/不來梅餅乾鳳茶酥.webp" alt="星空不來梅 · 餅乾＋鳳茶酥" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">鐵盒 · 單層 · 吃茶款</span>
+            <h4 class="gc-card-name">星空不來梅 · 餅乾＋鳳茶酥</h4>
+            <p class="gc-card-sub">單層 · 吃茶愛好者首選</p>
+            <ul class="gc-card-items"><li>鳳茶酥 4顆（濃茶金萱、伯爵紅烏龍各2）</li><li>餅乾 6片（蜜香紅茶、金萱口味各3）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$420</span>
+              <span class="gc-card-note">口味固定無法挑選</span>
+            </div>
+          </div>
+        </div>
+        <div class="gc-card gc-card-no-img reveal">
+          
+          <div class="gc-card-body">
+            <span class="gc-card-tag">鐵盒 · 雙層 · 吃茶款</span>
+            <h4 class="gc-card-name">星空不來梅 · 雙層吃茶款</h4>
+            <p class="gc-card-sub">雙層典藏版</p>
+            <ul class="gc-card-items"><li>鳳茶酥 4顆</li><li>餅乾 6片</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層（吃茶款）</div>
+              <ul class="gc-card-items"><li>鳳茶酥 4顆</li><li>餅乾 6片</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>長蛋捲 10支（芝麻×5、咖啡×5）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$820</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🌙</div>
+        <div>
+          <div class="gc-series-name">美好時光 · Lovely Time</div>
+          <div class="gc-series-note">美好的事物 獻給美好的你</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/美好時光雙層A款.webp" alt="美好時光 · 雙層綜合A款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">雙層 · A款</span>
+            <h4 class="gc-card-name">美好時光 · 雙層綜合A款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 16片（4種口味）</li><li>長蛋捲 2支（芝麻、咖啡各1）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>餅乾 16片（4種口味）</li><li>長蛋捲 2支（芝麻、咖啡各1）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>餅乾 10片（5種口味）</li><li>土鳳梨酥 3顆（原味、柚香金萱、布朗尼蔓越莓各1）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$699</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/美好時光雙層B款.webp" alt="美好時光 · 雙層綜合B款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">雙層 · B款</span>
+            <h4 class="gc-card-name">美好時光 · 雙層綜合B款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 16片（4種口味）</li><li>長蛋捲 2支（芝麻、咖啡各1）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>餅乾 16片（4種口味）</li><li>長蛋捲 2支（芝麻、咖啡各1）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>長蛋捲 10支（芝麻、咖啡各5）</li><li>土鳳梨酥 3顆（原味、柚香金萱、布朗尼蔓越莓各1）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$830</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/美好時光單層餅乾蛋捲.webp" alt="美好時光 · 單層提盒餅乾蛋捲" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">單層提盒 · 餅乾蛋捲款</span>
+            <h4 class="gc-card-name">美好時光 · 單層提盒餅乾蛋捲</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 16片（4種口味）</li><li>長蛋捲 2支（芝麻、咖啡各1）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$399</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/ycT66b6W/image.jpg" alt="美好時光 · 單層提盒蛋捲款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">單層提盒 · 蛋捲款</span>
+            <h4 class="gc-card-name">美好時光 · 單層提盒蛋捲款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>長蛋捲 14支（7種口味各2支）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$399</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🌸</div>
+        <div>
+          <div class="gc-series-name">Yumthé 花獻禮盒</div>
+          <div class="gc-series-note">滿版花卉插畫，附贈玫瑰舒緩茶</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/Yumthe花獻餅乾款.webp" alt="Yumthé 花獻 · 餅乾款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">花獻 · 餅乾款</span>
+            <h4 class="gc-card-name">Yumthé 花獻 · 餅乾款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>手工餅乾 21片（4種口味×4 + 1種口味×5）</li><li>玫瑰舒緩茶 1盒（3入茶包）</li></ul>
+            
+            <div class="gc-card-footer">
+              
+              <span class="gc-card-note">16盒 $75530盒 $66950盒 $56970盒↑ $509</span>
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/Yumthe花獻餅乾蛋捲款.webp" alt="Yumthé 花獻 · 餅乾蛋捲款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">花獻 · 餅乾蛋捲款</span>
+            <h4 class="gc-card-name">Yumthé 花獻 · 餅乾蛋捲款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>手工餅乾 13片（4種口味×2 + 1種口味×5）</li><li>長蛋捲 6支（芝麻、咖啡各3支）</li><li>玫瑰舒緩茶 1盒（3入茶包）</li></ul>
+            
+            <div class="gc-card-footer">
+              
+              <span class="gc-card-note">16盒 $78530盒 $69950盒 $59970盒↑ $539</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🎼</div>
+        <div>
+          <div class="gc-series-name">幸福樂章 · 小協奏禮盒</div>
+          <div class="gc-series-note">可提式紙製禮盒，輕巧好攜帶</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/小協奏禮盒餅乾款.webp" alt="小協奏禮盒 · 餅乾款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">小協奏 · 餅乾款</span>
+            <h4 class="gc-card-name">小協奏禮盒 · 餅乾款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 16片（8種口味）</li><li>可提式紙製禮盒</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$350</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/小協奏禮盒餅乾蛋捲款.webp" alt="小協奏禮盒 · 餅乾蛋捲款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">小協奏 · 餅乾蛋捲款</span>
+            <h4 class="gc-card-name">小協奏禮盒 · 餅乾蛋捲款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 8片（4種口味）</li><li>短蛋捲 9支（芝麻/咖啡2種口味）</li><li>可提式紙製禮盒</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$360</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🧩</div>
+        <div>
+          <div class="gc-series-name">幸福花磚 · 捲毛力卡聯名禮盒</div>
+          <div class="gc-series-note">紙盒包裝附提袋，雙層 / 三層可選</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/幸福花磚綜合款雙層.webp" alt="幸福花磚 · 綜合款雙層" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">聯名 · 雙層 · 綜合款</span>
+            <h4 class="gc-card-name">幸福花磚 · 綜合款雙層</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>餅乾 8片（4口味）</li><li>原味土鳳梨酥 2顆</li><li>柚香金萱土鳳梨酥 1顆</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$699</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/幸福花磚餅乾款雙層.webp" alt="幸福花磚 · 餅乾款雙層" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">聯名 · 雙層 · 餅乾款</span>
+            <h4 class="gc-card-name">幸福花磚 · 餅乾款雙層</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>餅乾 16片（4口味）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$699</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/qMJbvk6n/IMG-0408.jpg" alt="幸福花磚 · 綜合款三層" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">聯名 · 三層 · 綜合款</span>
+            <h4 class="gc-card-name">幸福花磚 · 綜合款三層</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▲ 上層</div>
+              <ul class="gc-card-items"><li>短蛋捲 10支（芝麻、咖啡各5）</li><li>桂花烏龍茶 1袋（5入茶包）</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▬ 中層</div>
+              <ul class="gc-card-items"><li>餅乾 8片（4口味）</li><li>原味土鳳梨酥 2顆</li><li>柚香金萱土鳳梨酥 1顆</li></ul>
+            </div>
+            <div class="gc-card-layer">
+              <div class="gc-card-layer-title">▼ 下層</div>
+              <ul class="gc-card-items"><li>餅乾 16片（4口味）</li></ul>
+            </div>
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$940</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">🌳</div>
+        <div>
+          <div class="gc-series-name">Happy Together · 麵包樹聯名禮盒</div>
+          <div class="gc-series-note">療癒插畫，多種組合滿足不同需求</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/HappyTogether蛋捲餅乾款.webp" alt="Happy Together · 蛋捲餅乾款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">麵包樹 · 蛋捲餅乾款</span>
+            <h4 class="gc-card-name">Happy Together · 蛋捲餅乾款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾綜 12片（6口味）</li><li>短蛋捲 16支（芝麻、咖啡各8）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$600</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="images/HappyTogether綜合款.webp" alt="Happy Together · 綜合款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">麵包樹 · 綜合款</span>
+            <h4 class="gc-card-name">Happy Together · 綜合款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 12片（6口味）</li><li>短蛋捲 8支（芝麻、咖啡各4）</li><li>土鳳梨酥 4顆（原味、布朗尼各2）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$599</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/MkJFswnN/Happy-Together-8.jpg" alt="Happy Together · 8入土鳳梨酥" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">麵包樹 · 8入鳳梨酥款</span>
+            <h4 class="gc-card-name">Happy Together · 8入土鳳梨酥</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 12片（6口味）</li><li>土鳳梨酥 8顆（原味4、布朗尼4）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$590</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/SDNJTQsH/image.jpg" alt="一起幸福吧 · 麵包樹聯名" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">麵包樹 · 一起幸福吧</span>
+            <h4 class="gc-card-name">一起幸福吧 · 麵包樹聯名</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 10片（5口味）</li><li>長蛋捲 6支（芝麻、咖啡各3）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$420</span>
+              <span class="gc-card-note">FSC 森林友善紙張</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-series reveal">
+      <div class="gc-series-header">
+        <div class="gc-series-icon">💭</div>
+        <div>
+          <div class="gc-series-name">美好夢想 · 許匡匡聯名禮盒</div>
+          <div class="gc-series-note">夢幻水藍插畫包裝，多款組合</div>
+        </div>
+      </div>
+      <div class="gc-grid">
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/bjbfNVFw/A.jpg" alt="美好夢想 · A款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">許匡匡 · A款</span>
+            <h4 class="gc-card-name">美好夢想 · A款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 16片（4口味：黃金柚子、紫心地瓜、清焙金萱、蜜香紅茶各4）</li><li>土鳳梨酥 6顆（原味×3、柚香金萱×3）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$560</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/g1jz1QW/B.jpg" alt="美好夢想 · B款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">許匡匡 · B款</span>
+            <h4 class="gc-card-name">美好夢想 · B款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>綜合餅乾 8片</li><li>土鳳梨酥 6顆（原味×3、柚香金萱×3）</li><li>長蛋捲 6支（芝麻、咖啡各3）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$590</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/9mw3cst8/C.jpg" alt="美好夢想 · C款" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">許匡匡 · C款</span>
+            <h4 class="gc-card-name">美好夢想 · C款</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>綜合餅乾 16片（4口味）</li><li>長蛋捲 10支（芝麻、咖啡各5）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$630</span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="gc-card reveal">
+          <div class="gc-card-img-wrap"><img src="https://i.ibb.co/Mxq4S51K/S.jpg" alt="美好夢想S · 餅乾蛋捲組" class="gc-card-img" loading="lazy"></div>
+          <div class="gc-card-body">
+            <span class="gc-card-tag">許匡匡 · S款</span>
+            <h4 class="gc-card-name">美好夢想S · 餅乾蛋捲組</h4>
+            <p class="gc-card-sub"></p>
+            <ul class="gc-card-items"><li>餅乾 15片（5口味：白/黑/咖啡/紅/紫心地瓜鑽石各3）</li><li>短蛋捲 9支（芝麻×5、咖啡×4）</li></ul>
+            
+            <div class="gc-card-footer">
+              <span class="gc-card-price">$450</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- IMPACT / SDGs -->
 
 <style>
@@ -1193,12 +1717,7 @@ footer::before {
         <li>44%     協助家庭照顧者重返職場</li>
         <li>15%     減少政府社會福利支出</li>
       </ul>
-      <a href="https://forms.gle/pMBpXsSpxUBdg5Bf6"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="btn btn-gold reveal"
-   id="contactEmailBtn">
-   立即洽詢企業合作</a>
+      <a href="mailto:2015035@ms.syinlu.org.tw" class="btn btn-gold reveal" id="contactEmailBtn">立即洽詢企業合作</a>
     </div>
     <div class="enterprise-card reveal">
       <h3>我們提供的服務</h3>
@@ -1232,12 +1751,7 @@ footer::before {
     <div class="footer-links">
       <h4>聯絡方式</h4>
       <span class="footer-brand-name">TZU-TAI Bremen</span>
-      <a href="https://forms.gle/pMBpXsSpxUBdg5Bf6"
-   target="_blank"
-   rel="noopener noreferrer"
-   id="footerEmailLink"
-   class="footer-contact-email">
-   企業合作表單</a>
+      <a href="mailto:2015035@ms.syinlu.org.tw" id="footerEmailLink" class="footer-contact-email">聯絡電子信箱</a>
       <p>TEL：02-2290-0959</p>
     </div>
 
