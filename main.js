@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const footerEmailLink = document.getElementById('footerEmailLink');
     const navCtaBtn = document.getElementById('navCtaBtn');
 
-    const enterpriseMailto = "mailto:" + fullEmail + "?subject=【企業合作洽詢】";
-
-    if (contactEmailBtn) contactEmailBtn.href = enterpriseMailto;
     if (footerEmailLink) {
         footerEmailLink.innerText = "聯絡電子信箱";
         footerEmailLink.href = "mailto:" + fullEmail;
