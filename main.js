@@ -1,22 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Google 表單
-const formUrl = "https://forms.gle/pMBpXsSpxUBdg5Bf6";
+    // 1. Email 安全處理
+    const emailUser = "2015035";
+    const emailDomain = "ms.syinlu.org.tw";
+    const fullEmail = emailUser + "@" + emailDomain;
 
-const contactEmailBtn = document.getElementById('contactEmailBtn');
-const footerEmailLink = document.getElementById('footerEmailLink');
+    const contactEmailBtn = document.getElementById('contactEmailBtn');
+    const footerEmailLink = document.getElementById('footerEmailLink');
+    const navCtaBtn = document.getElementById('navCtaBtn');
 
-if (contactEmailBtn) {
-    contactEmailBtn.href = formUrl;
-    contactEmailBtn.target = "_blank";
-    contactEmailBtn.rel = "noopener noreferrer";
-}
+    const enterpriseMailto = "mailto:" + fullEmail + "?subject=【企業合作洽詢】";
 
-if (footerEmailLink) {
-    footerEmailLink.href = formUrl;
-    footerEmailLink.target = "_blank";
-    footerEmailLink.rel = "noopener noreferrer";
-    footerEmailLink.textContent = "企業合作表單";
-}
+    if (contactEmailBtn) contactEmailBtn.href = enterpriseMailto;
+    if (footerEmailLink) {
+        footerEmailLink.innerText = "聯絡電子信箱";
+        footerEmailLink.href = "mailto:" + fullEmail;
+    }
+
+    // 1b. Meta Pixel — 企業合作洽詢按鈕點擊回報 Lead 事件
+    [contactEmailBtn, navCtaBtn].forEach((btn) => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+        });
+    });
+
     // 2. 導覽列滾動效果
     const mainNav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
